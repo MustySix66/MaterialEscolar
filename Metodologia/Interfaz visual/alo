@@ -1,0 +1,10 @@
+def calcular_pago(saldo_inicial, tasa_interes_mensual, num_meses):
+    saldo_final = saldo_inicial * (1 + tasa_interes_mensual) ** num_meses
+    return saldo_final
+
+saldo_inicial = float(input("Por favor, ingresa el saldo inicial: "))  # Saldo inicial
+tasa_interes_mensual = float(input("Por favor, ingresa la tasa de interés mensual (como decimal, por ejemplo, 0.05 para 5%): "))  # Tasa de interés mensual
+num_meses = float(input("Por favor, ingresa el número de meses: "))  # Número de meses
+
+saldo_final = calcular_pago(saldo_inicial, tasa_interes_mensual, num_meses)
+print(f"El monto que tendrías que pagar después de {num_meses} meses es: {saldo_final}")
