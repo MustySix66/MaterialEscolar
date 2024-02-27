@@ -22,4 +22,23 @@ public class MagoImp extends Personaje implements Mago{
                 hechizo.getNombre()+
                 "***********");
     }
+    @Override
+    public void atacar(Personaje objetivo){
+        lanzarHechizo(new Hechizo("Fire ball", 5), objetivo);
+    }
+    
+    @Override
+    public void defender(int daño){
+        int dañoRecibido=(int) (daño * .7);
+        vida -= dañoRecibido;
+        System.out.println("*****" + nombre + " recibió " + dañoRecibido + " de daño.");
+    }
+    @Override
+    public void mostrarInformacion(){
+        System.out.println("** nombre: " + nombre);
+        System.out.println("** clase: " + "Mago");
+        System.out.println("** vida: "+ vida);
+        System.out.println("** mana: "+ mana);
+        System.out.println("** nivel: " + nivel);
+    }
 }
