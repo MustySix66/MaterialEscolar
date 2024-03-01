@@ -1,7 +1,7 @@
 package logica;
 
 public class MagoImp extends Personaje implements Mago{
-
+    
     public MagoImp() {
     }
 
@@ -10,35 +10,32 @@ public class MagoImp extends Personaje implements Mago{
     }
     
     @Override
-    public void lanzarHechizo(Hechizo hechizo, Personaje objetivo){
-        int dañoRecibido = (int) (hechizo.getDaño()*.8);
+    public String lanzarHechizo(Hechizo hechizo, Personaje objetivo){
+        int dañoCritico = Personaje.TirosCriticos(4);
+        int dañoRecibido = (int) (hechizo.getDaño()*dañoCritico);
         objetivo.setVida(objetivo.getVida()-dañoRecibido);
-        System.out.println(
-                "**" +
-                objetivo.getNombre() +
-                "recibe" +
-                dañoRecibido +
-                "de daño del Hechizo" +
-                hechizo.getNombre()+
-                "***********");
+        return (
+                "** " + nombre + " ataca a: " + objetivo.getNombre() + " con " +hechizo.getNombre()+ " y le causó " +dañoRecibido
+                + " de daño.\n");
     }
     @Override
-    public void atacar(Personaje objetivo){
-        lanzarHechizo(new Hechizo("Fire ball", 5), objetivo);
+    public String atacar(Personaje objetivo){
+        return lanzarHechizo(new Hechizo("Fire ball", 15), objetivo);
     }
     
     @Override
     public void defender(int daño){
         int dañoRecibido=(int) (daño * .7);
         vida -= dañoRecibido;
-        System.out.println("*****" + nombre + " recibió " + dañoRecibido + " de daño.");
+        System.out.println("*****" + nombre + " recibió " + dañoRecibido + " de daño.\n");
     }
+    
     @Override
-    public void mostrarInformacion(){
-        System.out.println("** nombre: " + nombre);
-        System.out.println("** clase: " + "Mago");
-        System.out.println("** vida: "+ vida);
-        System.out.println("** mana: "+ mana);
-        System.out.println("** nivel: " + nivel);
+    public String mostrarInformacion(){
+        return ("** nombre: " + nombre + "\n" +
+        "** clase: " + "Mago" + "\n" +
+        "** vida: "+ vida+ "\n" +
+        "** mana: "+ mana+ "\n" +
+        "** nivel: " + nivel+ "\n");
     }
 }

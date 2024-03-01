@@ -1,6 +1,6 @@
 package logica;
 
 public interface Guerrero {
-    void atacarConEspada(Personaje objetivo);
-    void atacarConEscudo(Personaje objetivo);
+    String atacarConEspada(Personaje objetivo);
+    String atacarConEscudo(Personaje objetivo);
 }

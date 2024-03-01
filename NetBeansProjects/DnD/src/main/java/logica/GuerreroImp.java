@@ -10,39 +10,40 @@ public class GuerreroImp extends Personaje implements Guerrero{
     }
     
     @Override
-    public void atacar(Personaje objetivo){
-        atacarConEspada(objetivo);
+    public String atacar(Personaje objetivo){
+        return atacarConEspada(objetivo);
     }
     
     @Override
     public void defender(int daño){
         int dañoRecibido = (int)(daño*.8);
         vida -= dañoRecibido;
-        System.out.println("*****" + nombre + " recibió " + dañoRecibido + " de daño.");
+        System.out.println("***** " + nombre + " recibió " + dañoRecibido + " de daño.");
     }
     
     @Override
-    public void mostrarInformacion(){
-        System.out.println("** nombre: " + nombre);
-        System.out.println("** clase: " + "Guerrero");
-        System.out.println("** vida: "+ vida);
-        System.out.println("** mana: "+ mana);
-        System.out.println("** nivel: " + nivel);
+    public String mostrarInformacion(){
+        return ("** nombre: " + nombre + "\n" +
+        "** clase: " + "Guerrero" + "\n" +
+        "** vida: "+ vida+ "\n" +
+        "** mana: "+ mana+ "\n" +
+        "** nivel: " + nivel+ "\n");
     }
     
     @Override
-    public void atacarConEspada(Personaje objetivo){
-        int dañoDeEspada=(int)(nivel *5);
+    public String atacarConEspada(Personaje objetivo){
+        int dañoCritico = Personaje.TirosCriticos(3);
+        int dañoDeEspada=(int)(nivel * dañoCritico);
         objetivo.setVida(objetivo.getVida()-dañoDeEspada);
-        System.out.println("**" + nombre + " ataca a: " + objetivo.getNombre()
-        +" con la espada y le causó " + dañoDeEspada + " de daño");
+        return ("** " + nombre + " ataca a: " + objetivo.getNombre()
+        +" con la espada y le causó " + dañoDeEspada + " de daño\n");
     }
     
     @Override
-    public void atacarConEscudo(Personaje objetivo){
+    public String atacarConEscudo(Personaje objetivo){
         int dañoDeEscudo=(int)(nivel *3);
         objetivo.setVida(objetivo.getVida()-dañoDeEscudo);
-        System.out.println("**" + nombre + " ataca a: " + objetivo.getNombre()
-        +" con la espada y le causó " + dañoDeEscudo + " de daño");
+        return ("** " + nombre + " ataca a: " + objetivo.getNombre()
+        +" con la espada y le causó " + dañoDeEscudo + " de daño\n");
     }
 }
