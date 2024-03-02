@@ -11,8 +11,6 @@ public class Grafica extends javax.swing.JFrame {
         initComponents();
     }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -225,20 +223,45 @@ public class Grafica extends javax.swing.JFrame {
                         LoQueSeImprime += (magoOne.mostrarInformacion()+"\n");
                         LoQueSeImprime += (magoTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime += "\n*******************************************************\n";
+                        while(magoOne.estaVivo() && magoTwo.estaVivo()){
+                            LoQueSeImprime += magoOne.atacar(magoTwo);
+                            if (!magoTwo.estaVivo()) {
+                                LoQueSeImprime += ("\n** el mago " + magoOne.getNombre() + " ha vencido!!");
+                                break;
+                            }
+
+                            LoQueSeImprime += magoTwo.atacar(magoOne);
+                            if (!magoOne.estaVivo()) {
+                                LoQueSeImprime += ("\n** el mago "+ magoTwo.getNombre() + " ha vencido!!");
+                                break;
+                            }
+                        }
                     }
                     case "Guerrero" -> {
                         Personaje guerreroTwo = new GuerreroImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
                         LoQueSeImprime += (magoOne.mostrarInformacion()+"\n");
                         LoQueSeImprime += (guerreroTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime += "\n*******************************************************\n";
+
+                        while(magoOne.estaVivo() && guerreroTwo.estaVivo()){
+                            LoQueSeImprime += magoOne.atacar(guerreroTwo);
+                            if (!guerreroTwo.estaVivo()) {
+                                LoQueSeImprime += ("\n** el mago " + magoOne.getNombre() + " ha vencido!!");
+                                break;
+                            }
+
+                            LoQueSeImprime += guerreroTwo.atacar(magoOne);
+                            if (!magoOne.estaVivo()) {
+                                LoQueSeImprime += ("\n** el guerrero "+ guerreroTwo.getNombre() + " ha vencido!!");
+                                break;
+                            }
+                        }
                     }
                     case "Elfo" -> {
                         Personaje elfoTwo = new ElfoImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
                         LoQueSeImprime += (magoOne.mostrarInformacion()+"\n");
                         LoQueSeImprime += (elfoTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime += "\n*******************************************************\n";
-                        
-                        // TODO: COPIAR EL SIGUIENTE CODIGO CON LOS DEMÁS CASOS DE PELEA
                         
                         while(magoOne.estaVivo() && elfoTwo.estaVivo()){
                             LoQueSeImprime += magoOne.atacar(elfoTwo);
@@ -254,8 +277,6 @@ public class Grafica extends javax.swing.JFrame {
                             }
                         }
                         
-                        // TODO: AQUI TERMINAS DE COPIAR
-                        
                     }
                     default -> System.out.println("No furula combatiente 2");
                 }
@@ -269,18 +290,60 @@ public class Grafica extends javax.swing.JFrame {
                         LoQueSeImprime += (elfoOne.mostrarInformacion()+"\n");
                         LoQueSeImprime += (magoTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime += "\n***************************************\n";
+
+                        while(elfoOne.estaVivo() && magoTwo.estaVivo()){
+                            LoQueSeImprime += elfoOne.atacar(magoTwo);
+                            if (!magoTwo.estaVivo()) {
+                                LoQueSeImprime += ("\n** el elfo " + elfoOne.getNombre() + " ha vencido!!");
+                                break;
+                            }
+
+                            LoQueSeImprime += magoTwo.atacar(elfoOne);
+                            if (!elfoOne.estaVivo()) {
+                                LoQueSeImprime += ("\n** el mago "+ magoTwo.getNombre() + " ha vencido!!");
+                                break;
+                            }
+                        }
                     }
                     case "Guerrero" -> {
                         Personaje guerreroTwo = new GuerreroImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
                         LoQueSeImprime += (elfoOne.mostrarInformacion()+"\n");
                         LoQueSeImprime += (guerreroTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime += "\n***************************************\n";
+
+                        while(elfoOne.estaVivo() && guerreroTwo.estaVivo()){
+                            LoQueSeImprime += elfoOne.atacar(guerreroTwo);
+                            if (!guerreroTwo.estaVivo()) {
+                                LoQueSeImprime += ("\n** el elfo " + elfoOne.getNombre() + " ha vencido!!");
+                                break;
+                            }
+
+                            LoQueSeImprime += guerreroTwo.atacar(elfoOne);
+                            if (!elfoOne.estaVivo()) {
+                                LoQueSeImprime += ("\n** el guerrero "+ guerreroTwo.getNombre() + " ha vencido!!");
+                                break;
+                            }
+                        }
                     }
                     case "Elfo" -> {
                         Personaje elfoTwo = new ElfoImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
                         LoQueSeImprime += (elfoOne.mostrarInformacion()+"\n");
                         LoQueSeImprime += (elfoTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime += "\n***************************************\n";
+
+                        while(elfoOne.estaVivo() && elfoTwo.estaVivo()){
+                            LoQueSeImprime += elfoOne.atacar(elfoTwo);
+                            if (!elfoTwo.estaVivo()) {
+                                LoQueSeImprime += ("\n** el elfo " + elfoOne.getNombre() + " ha vencido!!");
+                                break;
+                            }
+
+                            LoQueSeImprime += elfoTwo.atacar(elfoOne);
+                            if (!elfoOne.estaVivo()) {
+                                LoQueSeImprime += ("\n** el elfo "+ elfoTwo.getNombre() + " ha vencido!!");
+                                break;
+                            }
+                        }
                     }
                     default -> System.out.println("No furula combatiente 2");
                 }
@@ -294,18 +357,60 @@ public class Grafica extends javax.swing.JFrame {
                         LoQueSeImprime += (guerreroOne.mostrarInformacion()+"\n");
                         LoQueSeImprime += (magoTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime += "\n***************************************\n";
+
+                        while(guerreroOne.estaVivo() && magoTwo.estaVivo()){
+                            LoQueSeImprime += guerreroOne.atacar(magoTwo);
+                            if (!magoTwo.estaVivo()) {
+                                LoQueSeImprime += ("\n** el guerrero " + guerreroOne.getNombre() + " ha vencido!!");
+                                break;
+                            }
+
+                            LoQueSeImprime += magoTwo.atacar(guerreroOne);
+                            if (!guerreroOne.estaVivo()) {
+                                LoQueSeImprime += ("\n** el mago "+ magoTwo.getNombre() + " ha vencido!!");
+                                break;
+                            }
+                        }
                     }
                     case "Guerrero" -> {
                         Personaje guerreroTwo = new GuerreroImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
                         LoQueSeImprime += (guerreroOne.mostrarInformacion()+"\n");
                         txtDisplay.setText(guerreroTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime += "\n***************************************\n";
+
+                        while(guerreroOne.estaVivo() && guerreroTwo.estaVivo()){
+                            LoQueSeImprime += guerreroOne.atacar(guerreroTwo);
+                            if (!guerreroTwo.estaVivo()) {
+                                LoQueSeImprime += ("\n** el guerrero " + guerreroOne.getNombre() + " ha vencido!!");
+                                break;
+                            }
+
+                            LoQueSeImprime += guerreroTwo.atacar(guerreroOne);
+                            if (!guerreroOne.estaVivo()) {
+                                LoQueSeImprime += ("\n** el guerrero "+ guerreroTwo.getNombre() + " ha vencido!!");
+                                break;
+                            }
+                        }
                     }
                     case "Elfo" -> {
                         Personaje elfoTwo = new ElfoImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
                         txtDisplay.setText(guerreroOne.mostrarInformacion()+"\n");
                         txtDisplay.setText(elfoTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime += "\n***************************************\n";
+
+                        while(guerreroOne.estaVivo() && elfoTwo.estaVivo()){
+                            LoQueSeImprime += guerreroOne.atacar(elfoTwo);
+                            if (!elfoTwo.estaVivo()) {
+                                LoQueSeImprime += ("\n** el guerrero " + guerreroOne.getNombre() + " ha vencido!!");
+                                break;
+                            }
+
+                            LoQueSeImprime += elfoTwo.atacar(guerreroOne);
+                            if (!guerreroOne.estaVivo()) {
+                                LoQueSeImprime += ("\n** el mago "+ elfoTwo.getNombre() + " ha vencido!!");
+                                break;
+                            }
+                        }
                     }
                     default -> System.out.println("No furula combatiente 2");
                 }
