@@ -14,10 +14,10 @@ public class MagoImp extends Personaje implements Mago{
         int dañoCritico = Personaje.TirosCriticos(4);
         int dañoRecibido = (int) (hechizo.getDaño()*dañoCritico);
         objetivo.setVida(objetivo.getVida()-dañoRecibido);
-        return (
-                "** " + nombre + " ataca a: " + objetivo.getNombre() + " con " +hechizo.getNombre()+ " y le causó " +dañoRecibido
+        return ("** " + nombre + " ataca a: " + objetivo.getNombre() + " con " +hechizo.getNombre()+ " y le causó " +dañoRecibido
                 + " de daño.\n");
     }
+
     @Override
     public String atacar(Personaje objetivo){
         return lanzarHechizo(new Hechizo("Fire ball", 15), objetivo);

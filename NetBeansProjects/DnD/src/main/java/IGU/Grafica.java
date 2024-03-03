@@ -279,10 +279,14 @@ public class Grafica extends javax.swing.JFrame {
         int manaTwo = Integer.parseInt(cbManaTwo.getSelectedItem().toString());
         int levelOne = Integer.parseInt(cbNivelOne.getSelectedItem().toString());
         int levelTwo = Integer.parseInt(cbNivelTwo.getSelectedItem().toString());
+        lblVidaOne.setText(String.valueOf(vidaOne));
+        lblVidaTwo.setText(String.valueOf(vidaTwo));
 
-        // TODO: Lo siguiente es la lista auxiliar para poder imprimir linea por linea los textos generados por el timer.
         ArrayList<String> LoQueSeImprime = new ArrayList<>();
-        Timer timer = new Timer(levelTwo, cbEspecieOne);
+        ArrayList<String> valoresLabelOne = new ArrayList<>();
+        ArrayList<String> valoresLabelTwo = new ArrayList<>();
+
+        Timer timer = new Timer(1000, cbManaOne);
 
         ActionListener actionListener = new ActionListener() {
             @Override
@@ -294,13 +298,30 @@ public class Grafica extends javax.swing.JFrame {
                 }
                 String linea = LoQueSeImprime.remove(0);
                 txtDisplay.append(linea); // EN CASO DE NECESARIO, REMOVER o AGREGAR UN SALTO DE LINEA
+
+                // TODO: Mejorar la forma en la que de forma automatica se van a actualizar las Label con cada tic del timer.
+                boolean mostrarLabel1 = false;
+                // Actualizar la Label
+                if (mostrarLabel1) {
+                    if (!valoresLabelOne.isEmpty()) {
+                        String valorLabel1 = valoresLabelOne.remove(0);
+                        lblVidaOne.setText(valorLabel1);
+                    }
+                    mostrarLabel1 = false;
+                } else {
+                    if (!valoresLabelTwo.isEmpty()) {
+                        String valorLabel2 = valoresLabelTwo.remove(0);
+                        lblVidaTwo.setText(valorLabel2);
+                    }
+                    mostrarLabel1 = true;
+                }
             }
         };
 
         timer.addActionListener(actionListener);
 
         timer.setDelay(1000);
-        timer.start();
+        
 
         // TODO: 
 
@@ -316,19 +337,21 @@ public class Grafica extends javax.swing.JFrame {
                         // Asignamos la vida a las etiquetas de texto mostradas en pantalla
                         // TODO: Tenemos pendientes asignar los valores a las lbl donde se reduzca la vida con cada turno del usuario.
                         lblCombatientes.setText(magoOne.getNombre()+" VS "+magoTwo.getNombre());
-                        lblVidaOne.setText(String.valueOf(magoOne.getVida()));
-                        lblVidaTwo.setText(String.valueOf(magoTwo.getVida()));
-                        lblManaOne.setText(String.valueOf(magoOne.getMana()));
-                        lblManaTwo.setText(String.valueOf(magoTwo.getMana()));
                         LoQueSeImprime.add("\n*******************************************************\n");
                         while(magoOne.estaVivo() && magoTwo.estaVivo()){
+                            timer.start();
+                            valoresLabelOne.add(String.valueOf(magoOne.getVida()));
+                            valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
                             LoQueSeImprime.add(magoOne.atacar(magoTwo));
+                            valoresLabelOne.add(String.valueOf(magoOne.getVida()));
+                            valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
                             if (!magoTwo.estaVivo()) {
                                 LoQueSeImprime.add("\n** el mago " + magoOne.getNombre() + " ha vencido!!");
                                 break;
                             }
 
                             LoQueSeImprime.add(magoTwo.atacar(magoOne));
+                            valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
                             if (!magoOne.estaVivo()) {
                                 LoQueSeImprime.add("\n** el mago "+ magoTwo.getNombre() + " ha vencido!!");
                                 break;
@@ -492,8 +515,8 @@ public class Grafica extends javax.swing.JFrame {
                     }
                     case "Elfo" -> {
                         Personaje elfoTwo = new ElfoImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
-                        txtDisplay.setText(guerreroOne.mostrarInformacion()+"\n");
-                        txtDisplay.setText(elfoTwo.mostrarInformacion()+"\n");
+                        LoQueSeImprime.add(guerreroOne.mostrarInformacion()+"\n");
+                        LoQueSeImprime.add(elfoTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime.add("\n***************************************\n");
 
                         while(guerreroOne.estaVivo() && elfoTwo.estaVivo()){
