@@ -18,6 +18,7 @@ public class ElfoImp extends Personaje implements Elfo{
     
     @Override
     public void defender(int daño){
+        // TODO: Aquí debe de usar un random con las posibilidades que tiene de esquivar el daño
         int dañoRecibido = (int)(daño*.8);
         vida -= dañoRecibido;
         System.out.println("** " + nombre + " recibió " + dañoRecibido + " de daño.");
@@ -35,7 +36,7 @@ public class ElfoImp extends Personaje implements Elfo{
     @Override
     public String atacarConArco(Personaje objetivo){
         int dañoCritico = Personaje.TirosCriticos(5);
-        int dañoDeArco =(int)(nivel * dañoCritico);
+        int dañoDeArco =(int)((nivel * 10) * dañoCritico); // 10 es el daño base de un flechazo del arco.
         objetivo.setVida(objetivo.getVida()-dañoDeArco);
         return ("** " + nombre + " ataca a: " + objetivo.getNombre()
         +" con el arco y le causó " + dañoDeArco + " de daño\n");
