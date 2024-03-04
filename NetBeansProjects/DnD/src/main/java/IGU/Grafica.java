@@ -11,6 +11,8 @@ import logica.Personaje;
 
 public class Grafica extends javax.swing.JFrame {
 
+    private int indice = 0;
+
     public Grafica() {
         initComponents();
     }
@@ -281,7 +283,7 @@ public class Grafica extends javax.swing.JFrame {
         int levelTwo = Integer.parseInt(cbNivelTwo.getSelectedItem().toString());
         lblVidaOne.setText(String.valueOf(vidaOne));
         lblVidaTwo.setText(String.valueOf(vidaTwo));
-
+        
         ArrayList<String> LoQueSeImprime = new ArrayList<>();
         ArrayList<String> valoresLabelOne = new ArrayList<>();
         ArrayList<String> valoresLabelTwo = new ArrayList<>();
@@ -300,20 +302,24 @@ public class Grafica extends javax.swing.JFrame {
                 txtDisplay.append(linea); // EN CASO DE NECESARIO, REMOVER o AGREGAR UN SALTO DE LINEA
 
                 // TODO: Mejorar la forma en la que de forma automatica se van a actualizar las Label con cada tic del timer.
-                boolean mostrarLabel1 = false;
+                
                 // Actualizar la Label
-                if (mostrarLabel1) {
-                    if (!valoresLabelOne.isEmpty()) {
-                        String valorLabel1 = valoresLabelOne.remove(0);
-                        lblVidaOne.setText(valorLabel1);
-                    }
-                    mostrarLabel1 = false;
-                } else {
-                    if (!valoresLabelTwo.isEmpty()) {
-                        String valorLabel2 = valoresLabelTwo.remove(0);
-                        lblVidaTwo.setText(valorLabel2);
-                    }
-                    mostrarLabel1 = true;
+                
+                switch (indice) {
+                    case 0:
+                        if (!valoresLabelOne.isEmpty()) {
+                            String valorLabel1 = valoresLabelOne.remove(0);
+                            lblVidaOne.setText(valorLabel1);
+                        }
+                        indice++;
+                        break;
+                    case 1:
+                        if (!valoresLabelTwo.isEmpty()) {
+                            String valorLabel2 = valoresLabelTwo.remove(0);
+                            lblVidaTwo.setText(valorLabel2);
+                        }
+                        indice = 0;
+                        break;
                 }
             }
         };
@@ -334,14 +340,13 @@ public class Grafica extends javax.swing.JFrame {
                         Personaje magoTwo = new MagoImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
                         LoQueSeImprime.add(magoOne.mostrarInformacion()+"\n");
                         LoQueSeImprime.add(magoTwo.mostrarInformacion()+"\n");
-                        // Asignamos la vida a las etiquetas de texto mostradas en pantalla
+                        valoresLabelOne.add(String.valueOf(magoOne.getVida()));
+                        valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
                         // TODO: Tenemos pendientes asignar los valores a las lbl donde se reduzca la vida con cada turno del usuario.
                         lblCombatientes.setText(magoOne.getNombre()+" VS "+magoTwo.getNombre());
                         LoQueSeImprime.add("\n*******************************************************\n");
                         while(magoOne.estaVivo() && magoTwo.estaVivo()){
                             timer.start();
-                            valoresLabelOne.add(String.valueOf(magoOne.getVida()));
-                            valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
                             LoQueSeImprime.add(magoOne.atacar(magoTwo));
                             valoresLabelOne.add(String.valueOf(magoOne.getVida()));
                             valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
@@ -349,12 +354,30 @@ public class Grafica extends javax.swing.JFrame {
                                 LoQueSeImprime.add("\n** el mago " + magoOne.getNombre() + " ha vencido!!");
                                 break;
                             }
-
                             LoQueSeImprime.add(magoTwo.atacar(magoOne));
+                            valoresLabelOne.add(String.valueOf(magoOne.getVida()));
                             valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
                             if (!magoOne.estaVivo()) {
                                 LoQueSeImprime.add("\n** el mago "+ magoTwo.getNombre() + " ha vencido!!");
                                 break;
+                            }
+                            
+                            // Actualizar las etiquetas después de los ataques
+                            switch (indice) {
+                                case 0:
+                                    if (!valoresLabelOne.isEmpty()) {
+                                        String valorLabel1 = valoresLabelOne.remove(0);
+                                        lblVidaOne.setText(valorLabel1);
+                                    }
+                                    indice++;
+                                    break;
+                                case 1:
+                                    if (!valoresLabelTwo.isEmpty()) {
+                                        String valorLabel2 = valoresLabelTwo.remove(0);
+                                        lblVidaTwo.setText(valorLabel2);
+                                    }
+                                    indice = 0;
+                                    break;
                             }
                         }
                     }
