@@ -293,6 +293,8 @@ public class Grafica extends javax.swing.JFrame {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                lblVidaOne.setText(valoresLabelOne.toString());
+                lblVidaTwo.setText(valoresLabelTwo.toString());
                 // Mostrar la siguiente linea en el TextArea
                 if (LoQueSeImprime.isEmpty()) {
                     timer.stop();
@@ -300,27 +302,7 @@ public class Grafica extends javax.swing.JFrame {
                 }
                 String linea = LoQueSeImprime.remove(0);
                 txtDisplay.append(linea); // EN CASO DE NECESARIO, REMOVER o AGREGAR UN SALTO DE LINEA
-
-                // TODO: Mejorar la forma en la que de forma automatica se van a actualizar las Label con cada tic del timer.
                 
-                // Actualizar la Label
-                
-                switch (indice) {
-                    case 0:
-                        if (!valoresLabelOne.isEmpty()) {
-                            String valorLabel1 = valoresLabelOne.remove(0);
-                            lblVidaOne.setText(valorLabel1);
-                        }
-                        indice++;
-                        break;
-                    case 1:
-                        if (!valoresLabelTwo.isEmpty()) {
-                            String valorLabel2 = valoresLabelTwo.remove(0);
-                            lblVidaTwo.setText(valorLabel2);
-                        }
-                        indice = 0;
-                        break;
-                }
             }
         };
 
@@ -340,44 +322,25 @@ public class Grafica extends javax.swing.JFrame {
                         Personaje magoTwo = new MagoImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
                         LoQueSeImprime.add(magoOne.mostrarInformacion()+"\n");
                         LoQueSeImprime.add(magoTwo.mostrarInformacion()+"\n");
-                        valoresLabelOne.add(String.valueOf(magoOne.getVida()));
-                        valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
                         // TODO: Tenemos pendientes asignar los valores a las lbl donde se reduzca la vida con cada turno del usuario.
                         lblCombatientes.setText(magoOne.getNombre()+" VS "+magoTwo.getNombre());
                         LoQueSeImprime.add("\n*******************************************************\n");
+                        valoresLabelOne.add(String.valueOf(magoOne.getVida()));
+                        valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
                         while(magoOne.estaVivo() && magoTwo.estaVivo()){
                             timer.start();
-                            LoQueSeImprime.add(magoOne.atacar(magoTwo));
                             valoresLabelOne.add(String.valueOf(magoOne.getVida()));
                             valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
+                            LoQueSeImprime.add(magoOne.atacar(magoTwo));
+
                             if (!magoTwo.estaVivo()) {
                                 LoQueSeImprime.add("\n** el mago " + magoOne.getNombre() + " ha vencido!!");
                                 break;
                             }
                             LoQueSeImprime.add(magoTwo.atacar(magoOne));
-                            valoresLabelOne.add(String.valueOf(magoOne.getVida()));
-                            valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
                             if (!magoOne.estaVivo()) {
                                 LoQueSeImprime.add("\n** el mago "+ magoTwo.getNombre() + " ha vencido!!");
                                 break;
-                            }
-                            
-                            // Actualizar las etiquetas después de los ataques
-                            switch (indice) {
-                                case 0:
-                                    if (!valoresLabelOne.isEmpty()) {
-                                        String valorLabel1 = valoresLabelOne.remove(0);
-                                        lblVidaOne.setText(valorLabel1);
-                                    }
-                                    indice++;
-                                    break;
-                                case 1:
-                                    if (!valoresLabelTwo.isEmpty()) {
-                                        String valorLabel2 = valoresLabelTwo.remove(0);
-                                        lblVidaTwo.setText(valorLabel2);
-                                    }
-                                    indice = 0;
-                                    break;
                             }
                         }
                     }
