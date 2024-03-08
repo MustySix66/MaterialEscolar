@@ -9,6 +9,7 @@ public class MagoImp extends Personaje implements Mago{
         super(nombre, vida, mana, nivel);
     }
     
+    // Metodo para lanzar un hechizo a un objetivo, define daño y probabilidad de critico.
     @Override
     public String lanzarHechizo(Hechizo hechizo, Personaje objetivo){
         int dañoCritico = Personaje.TirosCriticos(4);
@@ -18,11 +19,13 @@ public class MagoImp extends Personaje implements Mago{
                 + " de daño.\n");
     }
 
+    // Metodo para atacar un objetivo
     @Override
     public String atacar(Personaje objetivo){
         return lanzarHechizo(new Hechizo("Fire ball", 15), objetivo);
     }
     
+    // Metodo para defenderse (no imp)
     @Override
     public void defender(int daño){
         int dañoRecibido=(int) (daño * .7);
@@ -30,6 +33,7 @@ public class MagoImp extends Personaje implements Mago{
         System.out.println("*****" + nombre + " recibió " + dañoRecibido + " de daño.\n");
     }
     
+    // Metodo que muestra la información del personaje.
     @Override
     public String mostrarInformacion(){
         return ("** nombre: " + nombre + "\n" +

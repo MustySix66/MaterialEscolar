@@ -1,19 +1,24 @@
 package logica;
 
+// Clase GuerreroImp que hereda de Personaje e implementa la interfaz Guerrero
 public class GuerreroImp extends Personaje implements Guerrero{
 
+    // Constructor vacío de la clase
     public GuerreroImp() {
     }
 
+    // Constructor de la clase con parámetros del personaje
     public GuerreroImp(String nombre, int vida, int mana, int nivel) {
         super(nombre, vida, mana, nivel);
     }
     
+    // Método para atacar a un objetivo
     @Override
     public String atacar(Personaje objetivo){
         return atacarConEspada(objetivo);
     }
     
+    // Método para defenderse de un ataque (no imp)
     @Override
     public void defender(int daño){
         int dañoRecibido = (int)(daño*.8);
@@ -21,6 +26,7 @@ public class GuerreroImp extends Personaje implements Guerrero{
         System.out.println("***** " + nombre + " recibió " + dañoRecibido + " de daño.");
     }
     
+    // Método para mostrar la información del personaje
     @Override
     public String mostrarInformacion(){
         return ("** nombre: " + nombre + "\n" +
@@ -30,6 +36,7 @@ public class GuerreroImp extends Personaje implements Guerrero{
         "** nivel: " + nivel+ "\n");
     }
     
+    // Método para atacar a un objetivo con una espada
     @Override
     public String atacarConEspada(Personaje objetivo){
         int dañoCritico = Personaje.TirosCriticos(3);
@@ -39,6 +46,7 @@ public class GuerreroImp extends Personaje implements Guerrero{
         +" con la espada y le causó " + dañoDeEspada + " de daño\n");
     }
     
+    // Método para atacar a un objetivo con un escudo (no implementado aún)
     @Override
     public String atacarConEscudo(Personaje objetivo){
         int dañoDeEscudo=(int)(nivel *3);

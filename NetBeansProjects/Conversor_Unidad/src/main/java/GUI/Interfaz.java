@@ -161,46 +161,47 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertirActionPerformed
         try {
+            // Tomamos los valores de sus respectivos lugares
             String UnidadEntrada = String.valueOf(cbUnidadIngreso.getSelectedItem());
             String UnidadSalida = String.valueOf(cbConvertirUnidad.getSelectedItem());
-            Double ValorIngreso = Double.parseDouble(txtUnidadIngreso.getText());
+            Double ValorIngreso = Double.valueOf(txtUnidadIngreso.getText());
             
+            // Comprobamos la unidad que viene originalmente y mandamos a su clase para ser tratado despues.
             switch (UnidadEntrada) {
-                case "Kilometro":
+                case "Kilometro" -> {
                     KilometrosAOtraUnidad kilomet = new KilometrosAOtraUnidad();
                     txtResultado.setText(kilomet.formula(ValorIngreso, UnidadSalida));
-                    break;
-                case "Metro":
+                }
+                case "Metro" -> {
                     MetrosAOtraUnidad metro = new MetrosAOtraUnidad();
                     txtResultado.setText(metro.formula(ValorIngreso, UnidadSalida));
-                    break;
-                case "Centimetro":
+                }
+                case "Centimetro" -> {
                     CentimetrosAOtraUnidad centi = new CentimetrosAOtraUnidad();
                     txtResultado.setText(centi.formula(ValorIngreso, UnidadSalida));
-                    break;
-                case "Milimetro":
+                }
+                case "Milimetro" -> {
                     MilimetrosAOtraUnidad mili = new MilimetrosAOtraUnidad();
                     txtResultado.setText(mili.formula(ValorIngreso, UnidadSalida));
-                    break;
-                case "Milla":
+                }
+                case "Milla" -> {
                     MillasAOtraUnidad milla = new MillasAOtraUnidad();
                     txtResultado.setText(milla.formula(ValorIngreso, UnidadSalida));
-                    break;
-                case "Yarda":
+                }
+                case "Yarda" -> {
                     YardasAOtraUnidad yarda = new YardasAOtraUnidad();
                     txtResultado.setText(yarda.formula(ValorIngreso, UnidadSalida));
-                    break;
-                case "Pie":
+                }
+                case "Pie" -> {
                     PiesAOtraUnidad pie = new PiesAOtraUnidad();
                     txtResultado.setText(pie.formula(ValorIngreso, UnidadSalida));
-                    break;
-                case "Pulgada":
+                }
+                case "Pulgada" -> {
                     PulgadasAOtraUnidad pulgada = new PulgadasAOtraUnidad();
                     txtResultado.setText(pulgada.formula(ValorIngreso, UnidadSalida));
-                    break;
+                }
                 
-                default:
-                    txtResultado.setText("No furula :c");
+                default -> txtResultado.setText("No furula :c");
             }
             etiquetaPerrona.setText(UnidadSalida+"s");
         } catch (Exception e) {
@@ -221,7 +222,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_cbConvertirUnidadActionPerformed
 
     private void btnInvertirValoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvertirValoresActionPerformed
-        // TODO add your handling code here
+        // Invertimos las posiciones de las unidades deseadas
         int indexSuperior = cbUnidadIngreso.getSelectedIndex();
         int indexInferior = cbConvertirUnidad.getSelectedIndex();
         

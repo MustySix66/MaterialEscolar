@@ -3,7 +3,7 @@ package logica;
 import java.util.Random;
 
 public abstract class Personaje {
-    // Acercaos todos a escuchar la leyenda del ChupaChota
+    // Acercaos todos a escuchar la leyenda del viejo mago que en su bosque encantado lloró
     protected String nombre;
     protected int vida;
     protected int mana;
@@ -51,15 +51,18 @@ public abstract class Personaje {
         this.nivel = nivel;
     }
     
+    //Metodo que da un tiro critico multiplicando el daño base.
     protected static int TirosCriticos(int maxCritico){
         Random aleatorio = new Random();
         return aleatorio.nextInt(1, maxCritico);
     }
     
+    //Metodos abstractos de los personajes.
     public abstract String atacar(Personaje objetivo);
     public abstract void defender(int daño);
     public abstract String mostrarInformacion();
     
+    //Metodo para ver si está vivo el personaje o no.
     public boolean estaVivo(){
         return vida>0;
     }

@@ -1,5 +1,6 @@
 package logica;
 
+// En un metodo abstracto asignamos las acciones que va a cometer el hechizo, pero no como las hará.
 public class Hechizo {
     private String nombre;
     private int daño;

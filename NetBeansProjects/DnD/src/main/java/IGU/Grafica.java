@@ -3,7 +3,6 @@ package IGU;
 import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.event.*;
-
 import logica.ElfoImp;
 import logica.GuerreroImp;
 import logica.MagoImp;
@@ -45,11 +44,7 @@ public class Grafica extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDisplay = new javax.swing.JTextArea();
         cbVidaOne = new javax.swing.JComboBox<>();
-        lblCombatientes = new javax.swing.JLabel();
-        lblManaOne = new javax.swing.JLabel();
-        lblVidaTwo = new javax.swing.JLabel();
-        lblVidaOne = new javax.swing.JLabel();
-        lblManaTwo = new javax.swing.JLabel();
+        cbInutil = new javax.swing.JComboBox<>();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -137,26 +132,13 @@ public class Grafica extends javax.swing.JFrame {
             }
         });
 
-        lblCombatientes.setForeground(new java.awt.Color(0, 0, 0));
-        lblCombatientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        lblManaOne.setForeground(new java.awt.Color(0, 0, 0));
-        lblManaOne.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        lblVidaTwo.setForeground(new java.awt.Color(0, 0, 0));
-        lblVidaTwo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        lblVidaOne.setForeground(new java.awt.Color(0, 0, 0));
-        lblVidaOne.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        lblManaTwo.setForeground(new java.awt.Color(0, 0, 0));
-        lblManaTwo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cbInutil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnCombatir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -179,7 +161,7 @@ public class Grafica extends javax.swing.JFrame {
                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,25 +177,16 @@ public class Grafica extends javax.swing.JFrame {
                                     .addComponent(cbNivelOne, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(cbNivelTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblVidaOne, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblVidaTwo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2)
-                    .addComponent(lblCombatientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblManaOne, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblManaTwo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(cbInutil, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -231,7 +204,8 @@ public class Grafica extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbEspecieOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbEspecieTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbEspecieTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbInutil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,16 +213,12 @@ public class Grafica extends javax.swing.JFrame {
                             .addComponent(cbVidaTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbVidaOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6))
-                    .addComponent(jScrollPane2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbManaOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbManaTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCombatientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbManaOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbManaTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -256,14 +226,7 @@ public class Grafica extends javax.swing.JFrame {
                             .addComponent(cbNivelOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCombatir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblVidaTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblVidaOne, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblManaOne, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblManaTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
         );
 
@@ -271,6 +234,7 @@ public class Grafica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCombatirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCombatirActionPerformed
+        // Declaramos las variables necesarias para el programa.
         String nombreOne = txtNombreOne.getText();
         String nombreTwo = txtNombreTwo.getText();
         String combatienteOne = cbEspecieOne.getSelectedItem().toString();
@@ -281,39 +245,32 @@ public class Grafica extends javax.swing.JFrame {
         int manaTwo = Integer.parseInt(cbManaTwo.getSelectedItem().toString());
         int levelOne = Integer.parseInt(cbNivelOne.getSelectedItem().toString());
         int levelTwo = Integer.parseInt(cbNivelTwo.getSelectedItem().toString());
-        lblVidaOne.setText(String.valueOf(vidaOne));
-        lblVidaTwo.setText(String.valueOf(vidaTwo));
         
+        //Declaramos una lista donde asignaremos todo lo que se va a immprimir en la textArea
         ArrayList<String> LoQueSeImprime = new ArrayList<>();
-        ArrayList<String> valoresLabelOne = new ArrayList<>();
-        ArrayList<String> valoresLabelTwo = new ArrayList<>();
 
-        Timer timer = new Timer(1000, cbManaOne);
+        // Añadimos un timer que va relacionado a como se despliegan los mensajes en el txtArea
+        // Se le asigna como parametro la distancia en segundos entre tics y un actionListener vacio
+        Timer timer = new Timer(1000, cbInutil);
 
-        ActionListener actionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                lblVidaOne.setText(valoresLabelOne.toString());
-                lblVidaTwo.setText(valoresLabelTwo.toString());
-                // Mostrar la siguiente linea en el TextArea
-                if (LoQueSeImprime.isEmpty()) {
-                    timer.stop();
-                    return;
-                }
-                String linea = LoQueSeImprime.remove(0);
-                txtDisplay.append(linea); // EN CASO DE NECESARIO, REMOVER o AGREGAR UN SALTO DE LINEA
-                
+        // Generamos un bjeto action listener y le asignamos lo que debe de hacer.
+        ActionListener actionListener = (ActionEvent e) -> {
+            // Mostrar la siguiente linea en el TextArea
+            if (LoQueSeImprime.isEmpty()) {
+                timer.stop();
+                return;
             }
+            String linea = LoQueSeImprime.remove(0);
+            txtDisplay.append(linea); // EN CASO DE NECESARIO, REMOVER o AGREGAR UN SALTO DE LINEA
         };
 
+        // se reasigna un actionListener que es el necesario.
+        // anteriormente no podia asignarse correctamente debido al orden de la asignacion de objeto y los parametros
         timer.addActionListener(actionListener);
-
-        timer.setDelay(1000);
+        timer.start();
         
-
-        // TODO: 
-
-        
+        // Escogemos entre las opciones de combate, añadimos los objetos necesarios y agregamos
+        // los valores a imprimir en una lista.
         switch (combatienteOne) {
             case "Mago" -> {
                 Personaje magoOne = new MagoImp(nombreOne, vidaOne, manaOne, levelOne);
@@ -322,17 +279,10 @@ public class Grafica extends javax.swing.JFrame {
                         Personaje magoTwo = new MagoImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
                         LoQueSeImprime.add(magoOne.mostrarInformacion()+"\n");
                         LoQueSeImprime.add(magoTwo.mostrarInformacion()+"\n");
-                        // TODO: Tenemos pendientes asignar los valores a las lbl donde se reduzca la vida con cada turno del usuario.
-                        lblCombatientes.setText(magoOne.getNombre()+" VS "+magoTwo.getNombre());
                         LoQueSeImprime.add("\n*******************************************************\n");
-                        valoresLabelOne.add(String.valueOf(magoOne.getVida()));
-                        valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
                         while(magoOne.estaVivo() && magoTwo.estaVivo()){
-                            timer.start();
-                            valoresLabelOne.add(String.valueOf(magoOne.getVida()));
-                            valoresLabelTwo.add(String.valueOf(magoTwo.getVida()));
+                            
                             LoQueSeImprime.add(magoOne.atacar(magoTwo));
-
                             if (!magoTwo.estaVivo()) {
                                 LoQueSeImprime.add("\n** el mago " + magoOne.getNombre() + " ha vencido!!");
                                 break;
@@ -524,14 +474,6 @@ public class Grafica extends javax.swing.JFrame {
             }
             default -> System.out.println("No furula la entrada al usuario uno");
         }
-        
-        // TODO: 
-
-
-        
-        // txtDisplay.setText(LoQueSeImprime);
-
-        // TODO: 
     }//GEN-LAST:event_btnCombatirActionPerformed
 
     private void cbManaOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbManaOneActionPerformed
@@ -585,6 +527,7 @@ public class Grafica extends javax.swing.JFrame {
     private javax.swing.JButton btnCombatir;
     private javax.swing.JComboBox<String> cbEspecieOne;
     private javax.swing.JComboBox<String> cbEspecieTwo;
+    private javax.swing.JComboBox<String> cbInutil;
     private javax.swing.JComboBox<String> cbManaOne;
     private javax.swing.JComboBox<String> cbManaTwo;
     private javax.swing.JComboBox<String> cbNivelOne;
@@ -603,11 +546,6 @@ public class Grafica extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JLabel lblCombatientes;
-    private javax.swing.JLabel lblManaOne;
-    private javax.swing.JLabel lblManaTwo;
-    private javax.swing.JLabel lblVidaOne;
-    private javax.swing.JLabel lblVidaTwo;
     private javax.swing.JTextArea txtDisplay;
     private javax.swing.JTextField txtNombreOne;
     private javax.swing.JTextField txtNombreTwo;
