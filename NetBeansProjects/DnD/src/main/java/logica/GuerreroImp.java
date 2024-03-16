@@ -54,4 +54,10 @@ public class GuerreroImp extends Personaje implements Guerrero{
         return ("** " + nombre + " ataca a: " + objetivo.getNombre()
         +" con la espada y le causó " + dañoDeEscudo + " de daño\n");
     }
+    
+    @Override
+    public String defenderse(){
+        // reducir daño en un 90%
+        return "";
+    }
 }

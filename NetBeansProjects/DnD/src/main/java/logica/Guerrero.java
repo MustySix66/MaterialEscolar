@@ -4,4 +4,7 @@ package logica;
 public interface Guerrero {
     String atacarConEspada(Personaje objetivo);
     String atacarConEscudo(Personaje objetivo);
+    
+    // Añade una proteccion de un turno, reduce el daño en un 90%
+    String defenderse();
 }

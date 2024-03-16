@@ -1,12 +1,12 @@
 package IDK;
 
-import IGU.Grafica;
+import IGU.VentanaRol;
 
 public class DnD {
     
     public static void main(String[] args) {
         //crea unan ventana
-        Grafica formClaves = new Grafica();
+        VentanaRol formClaves = new VentanaRol();
         //hace visible la ventana
         formClaves.setVisible(true);
         //genera la ventana centrada

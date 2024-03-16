@@ -33,7 +33,7 @@ public class CuentaInfantil extends Cuenta implements Movimientos{
         respuesta += (" Se depositaron: " +monto+ " pesos\n");
         // Se calcula la bonificación en caramelos por el depósito
         totalCaramelos = (int) monto/10;
-        respuesta += (" Se otorgó una bonificacion por: " + totalCaramelos + " pesos\n");
+        respuesta += (" Se otorgó una bonificacion por: " + totalCaramelos + " caramelos\n");
         respuesta += (" su saldo actual es: " + saldo + " pesos");
         saldoCaramelos += totalCaramelos;
         respuesta += (" Su saldo actual de caramelos es: " + saldoCaramelos + " caramelos\n");
@@ -57,10 +57,15 @@ public class CuentaInfantil extends Cuenta implements Movimientos{
     
     // Método para realizar un retiro de caramelos de la cuenta
     public String retiroDulces(double monto){
-        respuesta= "<-----------RETIRO----------> \n";
-        saldoCaramelos-=monto;
-        respuesta += " se retiraron "+monto+" caramelos.\n";
-        respuesta+= " su saldo actual es de: "+saldoCaramelos+" caramelos.\n";
+        if (saldoCaramelos>0) {
+            respuesta= "<-----------RETIRO----------> \n";
+            saldoCaramelos-=monto;
+            respuesta += " se retiraron "+monto+" caramelos.\n";
+            respuesta += " su saldo actual es de: "+saldoCaramelos+" caramelos.\n";
+        }else{
+            respuesta = " No furula";
+        }
+        
         return respuesta;
     }
 }

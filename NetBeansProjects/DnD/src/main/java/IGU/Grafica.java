@@ -3,11 +3,12 @@ package IGU;
 import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.event.*;
-import logica.ElfoImp;
+import logica.CazadorImp;
 import logica.GuerreroImp;
 import logica.MagoImp;
 import logica.Personaje;
 
+// TODO: Modificar "Elfo" ya que debemos agregarlo como raza y no como clase. posible opcion de remplazo sería cazador.
 public class Grafica extends javax.swing.JFrame {
 
     private int indice = 0;
@@ -15,7 +16,7 @@ public class Grafica extends javax.swing.JFrame {
     public Grafica() {
         initComponents();
     }
-// esto de abajo no se borra por nada del mundo, al hacerlo el editor GUI de netbeans
+// esto de abajo no se borra por nada del mundo, al hacerlo el editor GUI de netbeans deja de funcionar
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -315,7 +316,7 @@ public class Grafica extends javax.swing.JFrame {
                         }
                     }
                     case "Elfo" -> {
-                        Personaje elfoTwo = new ElfoImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
+                        Personaje elfoTwo = new CazadorImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
                         LoQueSeImprime.add(magoOne.mostrarInformacion()+"\n");
                         LoQueSeImprime.add(elfoTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime.add("\n*******************************************************\n");
@@ -340,7 +341,7 @@ public class Grafica extends javax.swing.JFrame {
             }
 
             case "Elfo" -> {
-                Personaje elfoOne = new ElfoImp(nombreOne, vidaOne, manaOne, levelOne);
+                Personaje elfoOne = new CazadorImp(nombreOne, vidaOne, manaOne, levelOne);
                 switch (combatienteTwo) {
                     case "Mago" -> {
                         Personaje magoTwo = new MagoImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
@@ -383,7 +384,7 @@ public class Grafica extends javax.swing.JFrame {
                         }
                     }
                     case "Elfo" -> {
-                        Personaje elfoTwo = new ElfoImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
+                        Personaje elfoTwo = new CazadorImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
                         LoQueSeImprime.add(elfoOne.mostrarInformacion()+"\n");
                         LoQueSeImprime.add(elfoTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime.add("\n***************************************\n");
@@ -450,7 +451,7 @@ public class Grafica extends javax.swing.JFrame {
                         }
                     }
                     case "Elfo" -> {
-                        Personaje elfoTwo = new ElfoImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
+                        Personaje elfoTwo = new CazadorImp(nombreTwo, vidaTwo, manaTwo, levelTwo);
                         LoQueSeImprime.add(guerreroOne.mostrarInformacion()+"\n");
                         LoQueSeImprime.add(elfoTwo.mostrarInformacion()+"\n");
                         LoQueSeImprime.add("\n***************************************\n");

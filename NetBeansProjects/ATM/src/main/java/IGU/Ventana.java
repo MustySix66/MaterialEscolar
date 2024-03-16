@@ -209,7 +209,8 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDepositarActionPerformed
 
     private void btnRetiroDulcesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetiroDulcesActionPerformed
-        // Realiza el retiro de dulces
+        // Valida y realiza el retiro de dulces
+        
             txtMensajes.setText(cInfantil.retiroDulces(Double.parseDouble(txtMonto.getText())));
     }//GEN-LAST:event_btnRetiroDulcesActionPerformed
 

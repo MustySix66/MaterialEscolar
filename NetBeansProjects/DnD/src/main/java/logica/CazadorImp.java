@@ -1,14 +1,14 @@
 package logica;
 
-// Clase ElfoImp que hereda de Personaje e implementa la interfaz Elfo
-public class ElfoImp extends Personaje implements Elfo{
+// Clase CazadorImp que hereda de Personaje e implementa la interfaz Cazador
+public class CazadorImp extends Personaje implements Cazador{
 
     // Constructor vacío de la clase
-    public ElfoImp() {
+    public CazadorImp() {
     }
 
     // Constructor de la clase con parámetros
-    public ElfoImp(String nombre, int vida, int mana, int nivel) {
+    public CazadorImp(String nombre, int vida, int mana, int nivel) {
         super(nombre, vida, mana, nivel);
     }
     
@@ -31,7 +31,7 @@ public class ElfoImp extends Personaje implements Elfo{
     @Override
     public String mostrarInformacion(){
         return ("** nombre: " + nombre + "\n" +
-        "** clase: " + "Elfo" + "\n" +
+        "** clase: " + "Cazador" + "\n" +
         "** vida: "+ vida+ "\n" +
         "** mana: "+ mana+ "\n" +
         "** nivel: " + nivel+ "\n");
