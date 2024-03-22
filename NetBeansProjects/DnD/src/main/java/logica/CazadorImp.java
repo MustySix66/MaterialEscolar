@@ -2,6 +2,7 @@ package logica;
 
 // Clase CazadorImp que hereda de Personaje e implementa la interfaz Cazador
 public class CazadorImp extends Personaje implements Cazador{
+    String mensaje;
 
     // Constructor vacío de la clase
     public CazadorImp() {
@@ -14,17 +15,14 @@ public class CazadorImp extends Personaje implements Cazador{
     
     // Método para atacar a un objetivo
     @Override
-    public String atacar(Personaje objetivo){
+    public String atacar1(Personaje objetivo){
         return atacarConArco(objetivo);
     }
     
     // Método para defenderse de un ataque
     @Override
-    public void defender(int daño){
-        // TODO: Aquí debe de usar un random con las posibilidades que tiene de esquivar el daño
-        int dañoRecibido = (int)(daño*.8);
-        vida -= dañoRecibido;
-        System.out.println("** " + nombre + " recibió " + dañoRecibido + " de daño.");
+    public String atacar2(Personaje objetivo){
+        return navajazosLocos(objetivo);
     }
     
     // Método para mostrar la información del personaje
@@ -43,7 +41,18 @@ public class CazadorImp extends Personaje implements Cazador{
         int dañoCritico = Personaje.TirosCriticos(5);
         int dañoDeArco =(int)((nivel * 10) * dañoCritico); // 10 es el daño base de un flechazo del arco.
         objetivo.setVida(objetivo.getVida()-dañoDeArco);
-        return ("** " + nombre + " ataca a: " + objetivo.getNombre()
+        mensaje = ("** " + nombre + " ataca a: " + objetivo.getNombre()
         +" con el arco y le causó " + dañoDeArco + " de daño\n");
+        return objetivo.estaVivo()? mensaje:("+++"+ objetivo.getNombre()+ " ha muerto");
+    }
+    
+    @Override
+    public String navajazosLocos(Personaje objetivo){
+        int dañoCritico = Personaje.TirosCriticos(7);// los criticos aquí actuan como el numero de navajazos que podria asestar el cazador.
+        int dañoDeArco =(int)((nivel * 7) * dañoCritico); // 7 es el daño base de un navajazo.
+        objetivo.setVida(objetivo.getVida()-dañoDeArco);
+        mensaje = ("** " + nombre + " ataca a: " + objetivo.getNombre()
+        +" con el arco y le causó " + dañoDeArco + " de daño\n");
+        return objetivo.estaVivo()? mensaje:("+++"+ objetivo.getNombre()+ " ha muerto");
     }
 }

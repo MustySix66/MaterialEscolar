@@ -58,8 +58,8 @@ public abstract class Personaje {
     }
     
     //Metodos abstractos de los personajes.
-    public abstract String atacar(Personaje objetivo);
-    public abstract void defender(int daño);
+    public abstract String atacar1(Personaje objetivo);
+    public abstract String atacar2(Personaje objetivo);
     public abstract String mostrarInformacion();
     
     //Metodo para ver si está vivo el personaje o no.

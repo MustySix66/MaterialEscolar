@@ -2,7 +2,8 @@ package logica;
 
 // Clase GuerreroImp que hereda de Personaje e implementa la interfaz Guerrero
 public class GuerreroImp extends Personaje implements Guerrero{
-
+    String mensaje;
+    
     // Constructor vacío de la clase
     public GuerreroImp() {
     }
@@ -14,16 +15,14 @@ public class GuerreroImp extends Personaje implements Guerrero{
     
     // Método para atacar a un objetivo
     @Override
-    public String atacar(Personaje objetivo){
+    public String atacar1(Personaje objetivo){
         return atacarConEspada(objetivo);
     }
     
     // Método para defenderse de un ataque (no imp)
     @Override
-    public void defender(int daño){
-        int dañoRecibido = (int)(daño*.8);
-        vida -= dañoRecibido;
-        System.out.println("***** " + nombre + " recibió " + dañoRecibido + " de daño.");
+    public String atacar2(Personaje objetivo){
+        return atacarConEscudo(objetivo);
     }
     
     // Método para mostrar la información del personaje
@@ -42,8 +41,9 @@ public class GuerreroImp extends Personaje implements Guerrero{
         int dañoCritico = Personaje.TirosCriticos(3);
         int dañoDeEspada=(int)(nivel * dañoCritico);
         objetivo.setVida(objetivo.getVida()-dañoDeEspada);
-        return ("** " + nombre + " ataca a: " + objetivo.getNombre()
+        mensaje = ("** " + nombre + " ataca a: " + objetivo.getNombre()
         +" con la espada y le causó " + dañoDeEspada + " de daño\n");
+        return objetivo.estaVivo()? mensaje:("+++"+ objetivo.getNombre()+ " ha muerto");
     }
     
     // Método para atacar a un objetivo con un escudo (no implementado aún)
@@ -51,8 +51,9 @@ public class GuerreroImp extends Personaje implements Guerrero{
     public String atacarConEscudo(Personaje objetivo){
         int dañoDeEscudo=(int)(nivel *3);
         objetivo.setVida(objetivo.getVida()-dañoDeEscudo);
-        return ("** " + nombre + " ataca a: " + objetivo.getNombre()
+        mensaje =("** " + nombre + " ataca a: " + objetivo.getNombre()
         +" con la espada y le causó " + dañoDeEscudo + " de daño\n");
+        return objetivo.estaVivo()? mensaje:("+++"+ objetivo.getNombre()+ " ha muerto");
     }
     
     @Override

@@ -13,13 +13,8 @@ import logica.Personaje;
 
 public class VentanaRol extends javax.swing.JFrame {
 
-    private static String mensaje = "";
-    private static Personaje cMago = new MagoImp("Fulano", 100, 100, 10);
-    private static Personaje cCazador = new CazadorImp("ola", 100, 100, 10);
-    private static Personaje cGuerrero = new GuerreroImp("100", 100, 100, 10);
-    private static Personaje cMago2 = new MagoImp("Fulano", 100, 100, 10);
-    private static Personaje cCazador2 = new CazadorImp("ola", 100, 100, 10);
-    private static Personaje cGuerrero2 = new GuerreroImp("100", 100, 100, 10);
+    private static Personaje jugador1;
+    private static Personaje jugador2;
     
     
     /**
@@ -33,8 +28,8 @@ public class VentanaRol extends javax.swing.JFrame {
         btnJ1AtaqueUno.setIcon(new ImageIcon("src/main/java/libreri/mago/ataque1.png"));
         btnJ1AtaqueDos.setIcon(new ImageIcon("src/main/java/libreri/mago/ataque2.png"));
         
-        btnJ2AtaqueUno.setIcon(new ImageIcon("src/main/java/libreri/mago/ataque1.png"));
-        btnJ2AtaqueDos.setIcon(new ImageIcon("src/main/java/libreri/mago/ataque2.png"));
+        btnJ2AtaqueUno.setIcon(new ImageIcon("src/main/java/libreri/mago/ataque2.png"));
+        btnJ2AtaqueDos.setIcon(new ImageIcon("src/main/java/libreri/mago/ataque1.png"));
         
         lbJ1Raza.setIcon(new ImageIcon("src/main/java/libreri/raza/humano.png"));
         lbJ2Raza.setIcon(new ImageIcon("src/main/java/libreri/raza/humano.png"));
@@ -93,8 +88,9 @@ public class VentanaRol extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 153));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Juego de Rol");
 
@@ -115,7 +111,7 @@ public class VentanaRol extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.setBackground(new java.awt.Color(204, 0, 51));
+        jPanel2.setBackground(new java.awt.Color(51, 102, 255));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel2.setText("Clase");
@@ -140,11 +136,17 @@ public class VentanaRol extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel6.setText("Vida");
 
+        spJ1Vida.setModel(new javax.swing.SpinnerNumberModel(50, 50, 300, 1));
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel7.setText("Maná");
 
+        spJ1Mana.setModel(new javax.swing.SpinnerNumberModel(50, 50, 300, 1));
+
         jLabel8.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel8.setText("Nivel");
+
+        spJ1Nivel.setModel(new javax.swing.SpinnerNumberModel(1, 1, 25, 1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel9.setText("Nombre");
@@ -152,8 +154,18 @@ public class VentanaRol extends javax.swing.JFrame {
         lbJ1Raza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnJ1AtaqueDos.setEnabled(false);
+        btnJ1AtaqueDos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJ1AtaqueDosActionPerformed(evt);
+            }
+        });
 
         btnJ1AtaqueUno.setEnabled(false);
+        btnJ1AtaqueUno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJ1AtaqueUnoActionPerformed(evt);
+            }
+        });
 
         btnJ1CrearPersonaje.setText("Crear Personaje");
         btnJ1CrearPersonaje.addActionListener(new java.awt.event.ActionListener() {
@@ -246,7 +258,7 @@ public class VentanaRol extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel3.setBackground(new java.awt.Color(158, 59, 66));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel11.setText("Clase");
@@ -271,11 +283,17 @@ public class VentanaRol extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel13.setText("Vida");
 
+        spJ2Vida.setModel(new javax.swing.SpinnerNumberModel(50, 50, 300, 1));
+
         jLabel14.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel14.setText("Maná");
 
+        spJ2Mana.setModel(new javax.swing.SpinnerNumberModel(50, 50, 300, 1));
+
         jLabel15.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel15.setText("Nivel");
+
+        spJ2Nivel.setModel(new javax.swing.SpinnerNumberModel(1, 1, 25, 1));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel16.setText("Nombre");
@@ -283,8 +301,18 @@ public class VentanaRol extends javax.swing.JFrame {
         lbJ2Raza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnJ2AtaqueUno.setEnabled(false);
+        btnJ2AtaqueUno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJ2AtaqueUnoActionPerformed(evt);
+            }
+        });
 
         btnJ2AtaqueDos.setEnabled(false);
+        btnJ2AtaqueDos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJ2AtaqueDosActionPerformed(evt);
+            }
+        });
 
         btnJ2CrearPersonaje.setText("Crear Personaje");
         btnJ2CrearPersonaje.addActionListener(new java.awt.event.ActionListener() {
@@ -462,24 +490,16 @@ public class VentanaRol extends javax.swing.JFrame {
         
         switch ((String)cbJ1Clase.getSelectedItem()){
             case "Mago" ->{
-                //agrega los datos del personaje mago
-                cMago.setNombre(txtJ1Nombre.getText());
-                cMago.setVida((int)spJ1Vida.getValue());
-                cMago.setMana((int)spJ1Mana.getValue());
-                cMago.setNivel((int)spJ1Nivel.getValue());
-                //muestra los dstos del nuevo personaje 
+                jugador1 = new MagoImp(txtJ1Nombre.getText(),(int) spJ1Vida.getValue(), (int) spJ1Mana.getValue(), (int) spJ1Nivel.getValue());
+                agregarLineaColor(jTextPane1, jugador1.mostrarInformacion(), Color.DARK_GRAY);
             }
             case "Guerrero" ->{
-                cGuerrero.setNombre (txtJ1Nombre.getText());
-                cGuerrero.setVida((int)spJ1Vida.getValue());
-                cGuerrero.setMana((int)spJ1Mana.getValue());
-                cGuerrero.setNivel((int)spJ1Nivel.getValue());
+                jugador1 = new GuerreroImp(txtJ1Nombre.getText(),(int) spJ1Vida.getValue(), (int) spJ1Mana.getValue(), (int) spJ1Nivel.getValue());
+                agregarLineaColor(jTextPane1, jugador1.mostrarInformacion(), Color.DARK_GRAY);
             }
             case "Cazador" ->{
-                cCazador.setNombre (txtJ1Nombre.getText());
-                cCazador.setVida((int)spJ1Vida.getValue());
-                cCazador.setMana((int)spJ1Mana.getValue());
-                cCazador.setNivel((int)spJ1Nivel.getValue());
+                jugador1 = new CazadorImp(txtJ1Nombre.getText(),(int) spJ1Vida.getValue(), (int) spJ1Mana.getValue(), (int) spJ1Nivel.getValue());
+                agregarLineaColor(jTextPane1, jugador1.mostrarInformacion(), Color.DARK_GRAY);
             }
             default -> throw new AssertionError();
         }
@@ -496,27 +516,18 @@ public class VentanaRol extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJ1CrearPersonajeActionPerformed
 
     private void btnJ2CrearPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ2CrearPersonajeActionPerformed
-        // TODO add your handling code here:
         switch ((String)cbJ2Clase.getSelectedItem()){
             case "Mago" ->{
-                //agrega los datos del personaje mago
-                cMago2.setNombre(txtJ2Nombre.getText());
-                cMago2.setVida((int)spJ2Vida.getValue());
-                cMago2.setMana((int)spJ2Mana.getValue());
-                cMago2.setNivel((int)spJ2Nivel.getValue());
-                //muestra los dstos del nuevo personaje 
+                jugador2 = new MagoImp(txtJ2Nombre.getText(),(int) spJ2Vida.getValue(), (int) spJ2Mana.getValue(), (int) spJ2Nivel.getValue());
+                agregarLineaColor(jTextPane1, jugador2.mostrarInformacion(), Color.DARK_GRAY);
             }
             case "Guerrero" ->{
-                cGuerrero2.setNombre (txtJ2Nombre.getText());
-                cGuerrero2.setVida((int)spJ2Vida.getValue());
-                cGuerrero2.setMana((int)spJ2Mana.getValue());
-                cGuerrero2.setNivel((int)spJ2Nivel.getValue());
+                jugador2 = new GuerreroImp(txtJ2Nombre.getText(),(int) spJ2Vida.getValue(), (int) spJ2Mana.getValue(), (int) spJ2Nivel.getValue());
+                agregarLineaColor(jTextPane1, jugador2.mostrarInformacion(), Color.DARK_GRAY);
             }
             case "Cazador" ->{
-                cCazador2.setNombre (txtJ2Nombre.getText());
-                cCazador2.setVida((int)spJ2Vida.getValue());
-                cCazador2.setMana((int)spJ2Mana.getValue());
-                cCazador2.setNivel((int)spJ2Nivel.getValue());
+                jugador2 = new CazadorImp(txtJ2Nombre.getText(),(int) spJ2Vida.getValue(), (int) spJ2Mana.getValue(), (int) spJ2Nivel.getValue());
+                agregarLineaColor(jTextPane1, jugador2.mostrarInformacion(), Color.DARK_GRAY);
             }
             default -> throw new AssertionError();
         }
@@ -531,6 +542,59 @@ public class VentanaRol extends javax.swing.JFrame {
         btnJ2AtaqueDos.setEnabled(true);
         btnJ2CrearPersonaje.setEnabled(false);
     }//GEN-LAST:event_btnJ2CrearPersonajeActionPerformed
+
+    private void btnJ1AtaqueUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ1AtaqueUnoActionPerformed
+        agregarLineaColor(jTextPane1, jugador1.atacar1(jugador2), Color.BLACK);
+        btnJ1AtaqueUno.setEnabled(false);
+        btnJ1AtaqueDos.setEnabled(false);
+        if (jugador2.getVida()>=1) {
+            btnJ2AtaqueUno.setEnabled(true);
+            btnJ2AtaqueDos.setEnabled(true);
+        }else{
+            btnJ2AtaqueUno.setEnabled(false);
+            btnJ2AtaqueDos.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnJ1AtaqueUnoActionPerformed
+
+    private void btnJ1AtaqueDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ1AtaqueDosActionPerformed
+        agregarLineaColor(jTextPane1, jugador1.atacar2(jugador2), Color.BLACK);
+        btnJ1AtaqueUno.setEnabled(false);
+        btnJ1AtaqueDos.setEnabled(false);
+        if (jugador2.getVida()>=1) {
+            btnJ2AtaqueUno.setEnabled(true);
+            btnJ2AtaqueDos.setEnabled(true);
+        }else{
+            btnJ2AtaqueUno.setEnabled(false);
+            btnJ2AtaqueDos.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnJ1AtaqueDosActionPerformed
+
+    private void btnJ2AtaqueUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ2AtaqueUnoActionPerformed
+        agregarLineaColor(jTextPane1, jugador2.atacar1(jugador1), Color.BLACK);
+        btnJ2AtaqueUno.setEnabled(false);
+        btnJ2AtaqueDos.setEnabled(false);
+        if (jugador1.getVida()>=1) {
+            btnJ1AtaqueUno.setEnabled(true);
+            btnJ1AtaqueDos.setEnabled(true);
+        }else{
+            btnJ1AtaqueUno.setEnabled(false);
+            btnJ1AtaqueDos.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnJ2AtaqueUnoActionPerformed
+
+    private void btnJ2AtaqueDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ2AtaqueDosActionPerformed
+        agregarLineaColor(jTextPane1, jugador2.atacar1(jugador1), Color.BLACK);
+        btnJ2AtaqueUno.setEnabled(false);
+        btnJ2AtaqueDos.setEnabled(false);
+        if (jugador1.getVida()>=1) {
+            btnJ1AtaqueUno.setEnabled(true);
+            btnJ1AtaqueDos.setEnabled(true);
+        }else{
+            btnJ1AtaqueUno.setEnabled(false);
+            btnJ1AtaqueDos.setEnabled(false);
+        }
+        
+    }//GEN-LAST:event_btnJ2AtaqueDosActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,6 +1,7 @@
 package logica;
 
 public class MagoImp extends Personaje implements Mago{
+    String mensaje;
     
     public MagoImp() {
     }
@@ -15,22 +16,32 @@ public class MagoImp extends Personaje implements Mago{
         int dañoCritico = Personaje.TirosCriticos(4);
         int dañoRecibido = (int) (hechizo.getDaño()*dañoCritico);
         objetivo.setVida(objetivo.getVida()-dañoRecibido);
-        return ("** " + nombre + " ataca a: " + objetivo.getNombre() + " con " +hechizo.getNombre()+ " y le causó " +dañoRecibido
+        mensaje= ("** " + nombre + " ataca a: " + objetivo.getNombre() + " con " +hechizo.getNombre()+ " y le causó " +dañoRecibido
                 + " de daño.\n");
+        return objetivo.estaVivo()? mensaje:("+++"+ objetivo.getNombre()+ " ha muerto");
     }
 
     // Metodo para atacar un objetivo
     @Override
-    public String atacar(Personaje objetivo){
-        return lanzarHechizo(new Hechizo("Fire ball", 15), objetivo);
+    public String atacar1(Personaje objetivo){
+        mensaje = lanzarHechizo(new Hechizo("Fire ball", 15), objetivo);
+        return objetivo.estaVivo()? mensaje:("+++"+ objetivo.getNombre()+ " ha muerto");
     }
     
-    // Metodo para defenderse (no imp)
     @Override
-    public void defender(int daño){
-        int dañoRecibido=(int) (daño * .7);
-        vida -= dañoRecibido;
-        System.out.println("*****" + nombre + " recibió " + dañoRecibido + " de daño.\n");
+    public String invocacionAncestral(Hechizo hechizo, Personaje objetivo){
+        int dañoCritico = Personaje.TirosCriticos(2);
+        int dañoRecibido = (int) (hechizo.getDaño()*dañoCritico);
+        objetivo.setVida(objetivo.getVida()-dañoRecibido);
+        mensaje = ("** " + nombre + " ataca a: " + objetivo.getNombre() + " con " +hechizo.getNombre()+ " y le causó " +dañoRecibido
+                + " de daño.\n");
+        return objetivo.estaVivo()? mensaje:("+++"+ objetivo.getNombre()+ " ha muerto");
+        
+    }
+    
+    @Override
+    public String atacar2(Personaje objetivo){
+        return lanzarHechizo(new Hechizo("Mil manos demoniacas", 30), objetivo);
     }
     
     // Metodo que muestra la información del personaje.
