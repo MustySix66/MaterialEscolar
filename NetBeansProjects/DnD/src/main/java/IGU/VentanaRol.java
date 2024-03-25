@@ -28,8 +28,8 @@ public class VentanaRol extends javax.swing.JFrame {
         btnJ1AtaqueUno.setIcon(new ImageIcon("src/main/java/libreri/mago/ataque1.png"));
         btnJ1AtaqueDos.setIcon(new ImageIcon("src/main/java/libreri/mago/ataque2.png"));
         
-        btnJ2AtaqueUno.setIcon(new ImageIcon("src/main/java/libreri/mago/ataque2.png"));
-        btnJ2AtaqueDos.setIcon(new ImageIcon("src/main/java/libreri/mago/ataque1.png"));
+        btnJ2AtaqueUno.setIcon(new ImageIcon("src/main/java/libreri/mago/ataque1.png"));
+        btnJ2AtaqueDos.setIcon(new ImageIcon("src/main/java/libreri/mago/ataque2.png"));
         
         lbJ1Raza.setIcon(new ImageIcon("src/main/java/libreri/raza/humano.png"));
         lbJ2Raza.setIcon(new ImageIcon("src/main/java/libreri/raza/humano.png"));
@@ -64,6 +64,8 @@ public class VentanaRol extends javax.swing.JFrame {
         btnJ1AtaqueDos = new javax.swing.JButton();
         btnJ1AtaqueUno = new javax.swing.JButton();
         btnJ1CrearPersonaje = new javax.swing.JButton();
+        lblJ1Vida = new javax.swing.JLabel();
+        lblJ1mana = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         cbJ2Clase = new javax.swing.JComboBox<>();
@@ -82,9 +84,12 @@ public class VentanaRol extends javax.swing.JFrame {
         btnJ2AtaqueUno = new javax.swing.JButton();
         btnJ2AtaqueDos = new javax.swing.JButton();
         btnJ2CrearPersonaje = new javax.swing.JButton();
+        lblJ2Vida = new javax.swing.JLabel();
+        lblJ2mana = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
+        btnReiniciarJuego = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,15 +138,17 @@ public class VentanaRol extends javax.swing.JFrame {
             }
         });
 
+        lbJ1Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libreri/mago/mago.jpg"))); // NOI18N
+
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel6.setText("Vida");
 
-        spJ1Vida.setModel(new javax.swing.SpinnerNumberModel(50, 50, 300, 1));
+        spJ1Vida.setModel(new javax.swing.SpinnerNumberModel(100, 100, 1000, 5));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel7.setText("Maná");
 
-        spJ1Mana.setModel(new javax.swing.SpinnerNumberModel(50, 50, 300, 1));
+        spJ1Mana.setModel(new javax.swing.SpinnerNumberModel(100, 100, 1000, 5));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel8.setText("Nivel");
@@ -152,7 +159,9 @@ public class VentanaRol extends javax.swing.JFrame {
         jLabel9.setText("Nombre");
 
         lbJ1Raza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbJ1Raza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libreri/raza/humano.png"))); // NOI18N
 
+        btnJ1AtaqueDos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libreri/mago/ataque2.png"))); // NOI18N
         btnJ1AtaqueDos.setEnabled(false);
         btnJ1AtaqueDos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +169,7 @@ public class VentanaRol extends javax.swing.JFrame {
             }
         });
 
+        btnJ1AtaqueUno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libreri/mago/ataque1.png"))); // NOI18N
         btnJ1AtaqueUno.setEnabled(false);
         btnJ1AtaqueUno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +184,12 @@ public class VentanaRol extends javax.swing.JFrame {
             }
         });
 
+        lblJ1Vida.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
+        lblJ1Vida.setText("Vida: ");
+
+        lblJ1mana.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
+        lblJ1mana.setText("Maná:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -187,41 +203,43 @@ public class VentanaRol extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbJ1Raza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(btnJ1AtaqueUno, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnJ1AtaqueDos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnJ1CrearPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(btnJ1CrearPersonaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblJ1Vida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblJ1mana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(spJ1Vida, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(spJ1Mana, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(spJ1Mana, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(spJ1Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbJ1Clase, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(cbJ1Clase, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbJ1Raza, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 1, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtJ1Nombre)))
-                .addContainerGap())
+                                .addComponent(cbJ1Raza, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtJ1Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,17 +262,21 @@ public class VentanaRol extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtJ1Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbJ1Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lbJ1Raza, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbJ1Raza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnJ1AtaqueUno, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnJ1AtaqueDos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnJ1CrearPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnJ1CrearPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblJ1Vida)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblJ1mana))
+                    .addComponent(lbJ1Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
@@ -283,12 +305,12 @@ public class VentanaRol extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel13.setText("Vida");
 
-        spJ2Vida.setModel(new javax.swing.SpinnerNumberModel(50, 50, 300, 1));
+        spJ2Vida.setModel(new javax.swing.SpinnerNumberModel(100, 100, 1000, 5));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel14.setText("Maná");
 
-        spJ2Mana.setModel(new javax.swing.SpinnerNumberModel(50, 50, 300, 1));
+        spJ2Mana.setModel(new javax.swing.SpinnerNumberModel(100, 100, 1000, 5));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel15.setText("Nivel");
@@ -298,8 +320,12 @@ public class VentanaRol extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel16.setText("Nombre");
 
-        lbJ2Raza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbJ2Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libreri/mago/mago.jpg"))); // NOI18N
 
+        lbJ2Raza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbJ2Raza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libreri/raza/humano.png"))); // NOI18N
+
+        btnJ2AtaqueUno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libreri/mago/ataque1.png"))); // NOI18N
         btnJ2AtaqueUno.setEnabled(false);
         btnJ2AtaqueUno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,6 +333,7 @@ public class VentanaRol extends javax.swing.JFrame {
             }
         });
 
+        btnJ2AtaqueDos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libreri/mago/ataque2.png"))); // NOI18N
         btnJ2AtaqueDos.setEnabled(false);
         btnJ2AtaqueDos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,6 +348,12 @@ public class VentanaRol extends javax.swing.JFrame {
             }
         });
 
+        lblJ2Vida.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
+        lblJ2Vida.setText("Vida: ");
+
+        lblJ2mana.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
+        lblJ2mana.setText("Maná:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -329,44 +362,42 @@ public class VentanaRol extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lbJ2Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnJ2CrearPersonaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnJ2AtaqueUno, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnJ2AtaqueDos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbJ2Raza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblJ2Vida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblJ2mana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtJ2Nombre))
+                        .addComponent(txtJ2Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbJ2Clase, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel12)
+                        .addComponent(cbJ2Clase, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbJ2Raza, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbJ2Raza, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(spJ2Vida, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(spJ2Mana, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(spJ2Mana, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(spJ2Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lbJ2Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbJ2Raza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnJ2CrearPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(btnJ2AtaqueUno, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnJ2AtaqueDos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                        .addComponent(spJ2Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,22 +421,34 @@ public class VentanaRol extends javax.swing.JFrame {
                     .addComponent(jLabel16)
                     .addComponent(txtJ2Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbJ2Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(lbJ2Raza, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnJ2AtaqueUno, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnJ2AtaqueDos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnJ2CrearPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnJ2CrearPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblJ2Vida)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblJ2mana))
+                    .addComponent(lbJ2Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 0));
 
         jScrollPane1.setViewportView(jTextPane1);
+
+        btnReiniciarJuego.setText("reiniciar"); // NOI18N
+        btnReiniciarJuego.setEnabled(false);
+        btnReiniciarJuego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReiniciarJuegoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -414,13 +457,17 @@ public class VentanaRol extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnReiniciarJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addComponent(btnReiniciarJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -466,7 +513,6 @@ public class VentanaRol extends javax.swing.JFrame {
     }//GEN-LAST:event_cbJ1ClaseItemStateChanged
 
     private void cbJ2ClaseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbJ2ClaseItemStateChanged
-        // TODO add your handling code here:
         String clase = cbJ2Clase.getSelectedItem().toString().toLowerCase();
         lbJ2Foto.setIcon(new ImageIcon("src/main/java/libreri/"+clase+"/"+clase+".jpg"));
         btnJ2AtaqueUno.setIcon(new ImageIcon("src/main/java/libreri/"+clase+"/ataque1.png"));
@@ -474,19 +520,18 @@ public class VentanaRol extends javax.swing.JFrame {
     }//GEN-LAST:event_cbJ2ClaseItemStateChanged
 
     private void cbJ1RazaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbJ1RazaItemStateChanged
-        // TODO add your handling code here:
         String raza = cbJ1Raza.getSelectedItem().toString().toLowerCase();
         lbJ1Raza.setIcon(new ImageIcon("src/main/java/libreri/raza/"+raza+".png"));
     }//GEN-LAST:event_cbJ1RazaItemStateChanged
 
     private void cbJ2RazaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbJ2RazaItemStateChanged
-        // TODO add your handling code here:
         String raza = cbJ2Raza.getSelectedItem().toString().toLowerCase();
         lbJ2Raza.setIcon(new ImageIcon("src/main/java/libreri/raza/"+raza+".png"));
     }//GEN-LAST:event_cbJ2RazaItemStateChanged
 
     private void btnJ1CrearPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ1CrearPersonajeActionPerformed
-        // TODO: Aquí va un switch de personaje seleccionado.
+        lblJ1Vida.setText("vida: "+ spJ1Vida.getValue().toString());
+        lblJ1mana.setText("Maná: "+ spJ1Mana.getValue().toString());
         
         switch ((String)cbJ1Clase.getSelectedItem()){
             case "Mago" ->{
@@ -516,6 +561,9 @@ public class VentanaRol extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJ1CrearPersonajeActionPerformed
 
     private void btnJ2CrearPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ2CrearPersonajeActionPerformed
+        lblJ2Vida.setText("vida: "+ spJ2Vida.getValue().toString());
+        lblJ2mana.setText("Maná: "+ spJ2Mana.getValue().toString());
+        
         switch ((String)cbJ2Clase.getSelectedItem()){
             case "Mago" ->{
                 jugador2 = new MagoImp(txtJ2Nombre.getText(),(int) spJ2Vida.getValue(), (int) spJ2Mana.getValue(), (int) spJ2Nivel.getValue());
@@ -545,6 +593,8 @@ public class VentanaRol extends javax.swing.JFrame {
 
     private void btnJ1AtaqueUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ1AtaqueUnoActionPerformed
         agregarLineaColor(jTextPane1, jugador1.atacar1(jugador2), Color.BLACK);
+        lblJ1mana.setText("Maná: "+ jugador1.getMana());
+        lblJ2Vida.setText("vida: "+ jugador2.getVida());
         btnJ1AtaqueUno.setEnabled(false);
         btnJ1AtaqueDos.setEnabled(false);
         if (jugador2.getVida()>=1) {
@@ -553,24 +603,34 @@ public class VentanaRol extends javax.swing.JFrame {
         }else{
             btnJ2AtaqueUno.setEnabled(false);
             btnJ2AtaqueDos.setEnabled(false);
+            lblJ2Vida.setText("Vida: 0");
+            btnReiniciarJuego.setEnabled(true);
         }
     }//GEN-LAST:event_btnJ1AtaqueUnoActionPerformed
 
     private void btnJ1AtaqueDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ1AtaqueDosActionPerformed
         agregarLineaColor(jTextPane1, jugador1.atacar2(jugador2), Color.BLACK);
+        lblJ1mana.setText("Maná: "+ jugador1.getMana());
+        lblJ2Vida.setText("vida: "+ jugador2.getVida());
         btnJ1AtaqueUno.setEnabled(false);
         btnJ1AtaqueDos.setEnabled(false);
+        lblJ1Vida.setText("vida: "+ spJ1Vida.getValue().toString());
+        lblJ1mana.setText("Maná: "+ spJ1Mana.getValue().toString());
         if (jugador2.getVida()>=1) {
             btnJ2AtaqueUno.setEnabled(true);
             btnJ2AtaqueDos.setEnabled(true);
         }else{
             btnJ2AtaqueUno.setEnabled(false);
             btnJ2AtaqueDos.setEnabled(false);
+            lblJ2Vida.setText("Vida: 0");
+            btnReiniciarJuego.setEnabled(true);
         }
     }//GEN-LAST:event_btnJ1AtaqueDosActionPerformed
 
     private void btnJ2AtaqueUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ2AtaqueUnoActionPerformed
         agregarLineaColor(jTextPane1, jugador2.atacar1(jugador1), Color.BLACK);
+        lblJ2mana.setText("Maná: "+ jugador2.getMana());
+        lblJ1Vida.setText("vida: "+ jugador1.getVida());
         btnJ2AtaqueUno.setEnabled(false);
         btnJ2AtaqueDos.setEnabled(false);
         if (jugador1.getVida()>=1) {
@@ -579,11 +639,15 @@ public class VentanaRol extends javax.swing.JFrame {
         }else{
             btnJ1AtaqueUno.setEnabled(false);
             btnJ1AtaqueDos.setEnabled(false);
+            lblJ1Vida.setText("Vida: 0");
+            btnReiniciarJuego.setEnabled(true);
         }
     }//GEN-LAST:event_btnJ2AtaqueUnoActionPerformed
 
     private void btnJ2AtaqueDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ2AtaqueDosActionPerformed
         agregarLineaColor(jTextPane1, jugador2.atacar1(jugador1), Color.BLACK);
+        lblJ2mana.setText("Maná: "+ jugador2.getMana());
+        lblJ1Vida.setText("vida: "+ jugador1.getVida());
         btnJ2AtaqueUno.setEnabled(false);
         btnJ2AtaqueDos.setEnabled(false);
         if (jugador1.getVida()>=1) {
@@ -592,9 +656,33 @@ public class VentanaRol extends javax.swing.JFrame {
         }else{
             btnJ1AtaqueUno.setEnabled(false);
             btnJ1AtaqueDos.setEnabled(false);
+            lblJ1Vida.setText("Vida: 0");
+            btnReiniciarJuego.setEnabled(true);
         }
         
     }//GEN-LAST:event_btnJ2AtaqueDosActionPerformed
+
+    private void btnReiniciarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarJuegoActionPerformed
+        cbJ1Clase.setEnabled(true);
+        cbJ1Raza.setEnabled(true);
+        spJ1Vida.setEnabled(true);
+        spJ1Mana.setEnabled(true);
+        spJ1Nivel.setEnabled(true);
+        txtJ1Nombre.setEnabled(true);
+        btnJ1CrearPersonaje.setEnabled(true);
+        lblJ1Vida.setText("Vida: ");
+        lblJ1mana.setText("Maná: ");
+        
+        cbJ2Clase.setEnabled(true);
+        cbJ2Raza.setEnabled(true);
+        spJ2Vida.setEnabled(true);
+        spJ2Mana.setEnabled(true);
+        spJ2Nivel.setEnabled(true);
+        txtJ2Nombre.setEnabled(true);
+        btnJ2CrearPersonaje.setEnabled(true);
+        lblJ2Vida.setText("Vida: ");
+        lblJ2mana.setText("Maná: ");
+    }//GEN-LAST:event_btnReiniciarJuegoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -649,6 +737,7 @@ public class VentanaRol extends javax.swing.JFrame {
     private javax.swing.JButton btnJ2AtaqueDos;
     private javax.swing.JButton btnJ2AtaqueUno;
     private javax.swing.JButton btnJ2CrearPersonaje;
+    private javax.swing.JButton btnReiniciarJuego;
     private javax.swing.JComboBox<String> cbJ1Clase;
     private javax.swing.JComboBox<String> cbJ1Raza;
     private javax.swing.JComboBox<String> cbJ2Clase;
@@ -676,6 +765,10 @@ public class VentanaRol extends javax.swing.JFrame {
     private javax.swing.JLabel lbJ1Raza;
     private javax.swing.JLabel lbJ2Foto;
     private javax.swing.JLabel lbJ2Raza;
+    private javax.swing.JLabel lblJ1Vida;
+    private javax.swing.JLabel lblJ1mana;
+    private javax.swing.JLabel lblJ2Vida;
+    private javax.swing.JLabel lblJ2mana;
     private javax.swing.JSpinner spJ1Mana;
     private javax.swing.JSpinner spJ1Nivel;
     private javax.swing.JSpinner spJ1Vida;
