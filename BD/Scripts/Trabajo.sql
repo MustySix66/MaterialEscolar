@@ -83,3 +83,33 @@ INSERT INTO Revisiones (CambioAceite, CambioFiltro, RevisionFrenos, Otro, Matric
 ('Sí', 'Sí', 'Sí', NULL,'V1234LC'),
 ('No', 'Sí', 'No', 'Cambiar limpias','V9834LH'), 
 ('No', 'Sí', 'No', NULL,'V1010PB');
+
+update clientes set DireccionCliente = 'Siglo XXI 1250' where CodigoCliente = 100;
+INSERT INTO Revisiones (CambioAceite, CambioFiltro, RevisionFrenos, Otro, Matricula1) VALUES ('No', 'No', 'Si', 'Cambio balatas','V7632NX');
+update cochesvendidos set Color = 'NEGRO' where Matricula = 'V2360OX';
+update clientes set CodigoPostal = '46400' where CodigoCliente = '11';
+update cochesvendidos set Precio = 30000 where Matricula = 'V2360OX';
+update revisiones set Otro = 'Revisar elevadores de puertas' where Nrevision = 14;
+update revisiones set RevisionFrenos = 'Si' where Nrevision = 1;
+delete from clientes where CodigoCliente = 365;
+delete from revisiones where Matricula1= 'V9834LH';
+delete from cochesvendidos where Matricula='V9834LH' ;
+delete from revisiones where Nrevision=12;
+
+## CONSULTAS:
+# 1.Realiza una consulta que muestre los clientes de la población de valencia 
+select * from clientes where Estado='valencia';
+# 2.Realiza una consulta que muestre el precio, únicamente de aquellos autos que seanFord
+select * from cochesvendidos where Marca='ford';
+# 3.Crea una consulta para visualizar únicamente los campos Matrícula, Marca y Modelo de los autos que su precio este entre 20000 y 25000.
+select Matricula, Marca, Modelo from cochesvendidos where Precio between '20000' and '25000';
+# 4.Realiza una consulta que muestre los autos de marca Ford que tengan un precio superior a 26000.
+select * from cochesvendidos where Precio>26000 and Marca= 'ford';
+# 5.Muestra todas las revisiones de los autos con cambio de aceite o revisión de frenos.
+select * from revisiones where CambioAceite='si' or RevisionFrenos='si';
+# 6.Realiza una consulta que muestre todos los clientes donde elnúmero deteléfono termine en 2.
+select * from clientes where Telefono like '%2';
+# 7.Ordena los clientes por sus apellidos de forma ascendente
+select * from clientes order by ApellidosCliente asc;
+# 8.Ordena los cochesVedidos por precio de forma descendente
+select * from cochesvendidos order by Precio desc;

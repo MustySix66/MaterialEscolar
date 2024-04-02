@@ -59,3 +59,48 @@ alter table materia add column horas_totales int;
 alter table materia add column horas int after nombre_m;
 alter table materia change column horas horas_semana int;
 alter table materia drop column horas_semana;
+
+INSERT INTO carrera(nombre_c,duracion_c) VALUES ("TICS","3 ANIOS 8 MESES");
+INSERT INTO carrera(nombre_c,duracion_c) VALUES ("MECATRONICA","3 ANIOS 8 MESES");
+INSERT INTO carrera(nombre_c,duracion_c) VALUES ("CONTABILIDAD","3 ANIOS 8 MESES");
+##Alumnos------------------------------------------------------
+insert into alumno (nombre_al,edad,carrera_clave_c) values 
+("Adolfo", 30, 1),
+("Maria", 18, 1 ),
+("Sofia", 20, 3),
+("Carlos", 25, 2),
+("Mario", 19, 2);
+
+##Materias-----------------------------------------------------------
+insert into materia (nombre_m,coordinacion,horas_totales) values ("Base de datos","Software",60);
+insert into materia (nombre_m,coordinacion,horas_totales) values ("Poo","Software",90);
+insert into materia (nombre_m,coordinacion,horas_totales) values ("Ingles","Ingles",60);
+insert into materia (nombre_m,coordinacion,horas_totales) values ("Disenio Web","Software",60);
+insert into materia (nombre_m,coordinacion,horas_totales) values ("Redes","Redes",60);
+
+###Profesor---------------------------------------------------
+insert into profesor(nombre_p,direccion_p) values ("Gonzalo","Madero 323");
+insert into profesor(nombre_p,direccion_p) values ("Cuco","Lopez Mateos 1005");
+insert into profesor(nombre_p,direccion_p) values ("Chess","Pulgas Pandas 520");
+
+### Alumno-Profesor-------------------------------------------
+insert into alumno_profesor (alumno_clave_al,profesor_clave_p) values (1,1);
+insert into alumno_profesor (alumno_clave_al,profesor_clave_p) values (1,2);
+insert into alumno_profesor (alumno_clave_al,profesor_clave_p) values (1,3);
+insert into alumno_profesor (alumno_clave_al,profesor_clave_p) values (2,1);
+insert into alumno_profesor (alumno_clave_al,profesor_clave_p) values (3,3);
+
+### Materia-Alumnos------------------------------------------
+insert into materia_alumno(alumno_clave_al,materia_clave_m) values(1,1);
+insert into materia_alumno(alumno_clave_al,materia_clave_m) values(1,2);
+insert into materia_alumno(alumno_clave_al,materia_clave_m) values(2,1);
+insert into materia_alumno(alumno_clave_al,materia_clave_m) values(2,2);
+insert into materia_alumno(alumno_clave_al,materia_clave_m) values(3,1);
+
+##materia-profesor-----------------------------------------
+
+insert into materia_profesor(materia_clave_m,profesor_clave_p) values (1,1);
+insert into materia_profesor(materia_clave_m,profesor_clave_p) values (1,2);
+insert into materia_profesor(materia_clave_m,profesor_clave_p) values (2,2);
+insert into materia_profesor(materia_clave_m,profesor_clave_p) values (2,3);
+insert into materia_profesor(materia_clave_m,profesor_clave_p) values (3,3);
