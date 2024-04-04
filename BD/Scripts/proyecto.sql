@@ -1,5 +1,3 @@
-# LA DEL WINGS ARMY UwU UwU
-
 create database Andrade_Lopez_Kevin_Antonio_Proyecto;
 use Andrade_Lopez_Kevin_Antonio_Proyecto;
 
@@ -16,9 +14,9 @@ create table Clientes (
 );
 
 create table Pedidos (
-    IDPedido INT not null AUTO_INCREMENT,
-    ClienteID INT(10),
-    FechaPedido DATETIME,
+    IDPedido int not null auto_increment,
+    ClienteID int(10),
+    FechaPedido datetime,
     constraint pk_CodigoPedido primary key (IDPedido),
     constraint fk_CodigoCliente foreign key (ClienteID) references Clientes(IDCliente)
 );
@@ -29,18 +27,18 @@ create table Platillos (
     Descripcion text,
     Precio float,
     Tamaño varchar(1),
-    constraint pf_CodigoPlatillo primary key (ID_Platillo)
+    constraint pk_CodigoPlatillo primary key (ID_Platillo)
 );
 
-CREATE TABLE DetallePedidos (
-  DetalleID INT PRIMARY KEY not null AUTO_INCREMENT,
-  PedidoID INT(10),
-  PlatilloID INT(10),
-  Cantidad INT(10),
-  PrecioVenta FLOAT(10),
+create table DetallePedidos (
+  DetalleID int primary key not null auto_increment,
+  PedidoID int(10),
+  PlatilloID int(10),
+  Cantidad int(10),
+  PrecioVenta float(10),
   Comentarios text(10),
-  CONSTRAINT fk_CodigoPedido FOREIGN KEY (PedidoID) REFERENCES Pedidos(IDPedido),
-  CONSTRAINT fk_CodigoPlatillo FOREIGN KEY (PlatilloID) REFERENCES Platillos(ID_Platillo)
+  constraint fk_CodigoPedido foreign key (PedidoID) references Pedidos(IDPedido),
+  constraint fk_CodigoPlatillo foreign key (PlatilloID) references Platillos(ID_Platillo)
 );
 
 CREATE TABLE Clientes_Platillos (
@@ -106,7 +104,8 @@ insert into platillos (Nombre, Descripcion, Precio) values
 ('Chiles Rellenos', 'Chiles poblanos rellenos de queso y carne', '80'),
 ('Pollo al Horno', 'Pollo marinado y horneado con especias', '120'),
 ('Carnitas', 'Trozos de carne de cerdo cocidos a fuego lento', '60'),
-('Barbacoa de Borrego', 'Carne de borrego cocida en su jugo', '110');
+('Barbacoa de Borrego', 'Carne de borrego cocida en su jugo', '110'),
+('costillas con ejotes', 'Costillas al carbon con una salsa de ejote', '7000');
 
 insert into detallepedidos (PedidoID,PlatilloID,Cantidad,PrecioVenta,Comentarios) values
 ('1','2','3','75','3 ordenes de arroz'),
@@ -131,3 +130,26 @@ INSERT INTO clientes_platillos (ClienteID, PlatilloID) VALUES
 (10, 4),
 (11, 5),
 (12, 6);
+
+# Delete
+delete from platillos where ID_Platillo=1;
+delete from platillos where ID_Platillo=11;
+delete from pedidos where ClienteID=11;
+
+# Update
+update platillos set Descripcion='Rica carne con un delicioso adobo casero UwU' where ID_Platillo=3;
+update detallepedidos set Comentarios = 'Sin cebolla' where DetalleID =3;
+update clientes set Telefono = '449654321' where IDCliente=5;
+
+# Select
+select IDCliente, Nombre, Colonia, Telefono from clientes;
+select Nombre, Precio from platillos;
+select IDPedido, HoraPedido from pedidos;
+
+select * from clientes where IDCliente=7;
+select * from detallepedidos where PlatilloID=4;
+select * from clientes_platillos where ClienteID =2;
+
+select * from pedidos where time(HoraPedido)>'13:0:0';
+select Nombre, Precio from platillos where Precio>70;
+select * from clientes where Nombre like '%s';
