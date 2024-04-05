@@ -1,26 +1,19 @@
 package Logica;
 
-/**
- * @author kevin
- */
 public abstract class Platillo {
     protected String nombre;
-    protected String descripcion;
     protected String ingredientes;
-    protected double costo;
-    protected String pasosReceta;
+    protected double precio;
+    protected double precioIngrediente;
 
     public Platillo() {
     }
 
-    public Platillo(String nombre, String descripcion, String ingredientes, double costo, String pasosReceta) {
+    public Platillo(String nombre, String ingredientes, double precio) {
         this.nombre = nombre;
-        this.descripcion = descripcion;
         this.ingredientes = ingredientes;
-        this.costo = costo;
-        this.pasosReceta = pasosReceta;
+        this.precio = precio;
     }
-   
 
     public String getNombre() {
         return nombre;
@@ -28,14 +21,6 @@ public abstract class Platillo {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public String getIngredientes() {
@@ -46,23 +31,23 @@ public abstract class Platillo {
         this.ingredientes = ingredientes;
     }
 
-    public double getCosto() {
-        return costo;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setCosto(float costo) {
-        this.costo = costo;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
-    public String getPasosReceta() {
-        return pasosReceta;
+    public double getPrecioIngrediente() {
+        return precioIngrediente;
     }
 
-    public void setPasosReceta(String pasosReceta) {
-        this.pasosReceta = pasosReceta;
+    public void setPrecioIngrediente(double precioIngrediente) {
+        this.precioIngrediente = precioIngrediente;
     }
     
-    public abstract String metodoPreparación();
-    public abstract float costoPreparacion();
-    
+    public abstract String Preparacion();
+    public abstract String Ingrendientes();
+    public abstract double Costo();
 }
