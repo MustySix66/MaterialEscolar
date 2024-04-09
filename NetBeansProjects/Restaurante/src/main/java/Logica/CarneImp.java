@@ -26,6 +26,7 @@ public class CarneImp extends Platillo implements CarneJugo{
         return 1500;
     };
 
+    @Override
     public String CoccionPlato(){
         return "Corta finamente la carne en rodajas finas y luego en pequeños cubitos; coloca la carne en un recipiente de vidrio. \n Mezcla la salsa de soya, el jugo de limón y la pimienta y agrega la carne. \n Deja marinar la carne durante unos minutos mientras se cocina el tocino Fríe el tocino en un sartén de tamaño mediano a fuego medio hasta que esté crujiente, unos 8 minutos, transfiera el tocino con una cuchara de escurrir a un plato forrado con una toalla de papel y vierta todos menos 1 cucharada de grasa de la olla.\n "
         + "Añada la carne a la olla y cocina a fuego medio durante unos 8 minutos, durante este tiempo la carne va a liberar algunos de sus jugos. \n "
@@ -36,7 +37,8 @@ public class CarneImp extends Platillo implements CarneJugo{
     };
 
     public double PrecioPlato(){
-
+        // TODO: NO FINITO
+        return 0;
     };
 
 }
