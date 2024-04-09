@@ -3,6 +3,7 @@ package IGU;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -17,7 +18,7 @@ public class VentanaRol extends javax.swing.JFrame {
     private static Personaje jugador2;
     
     
-    /**
+    /** 
      * Creates new form VentanaRol
      */
     public VentanaRol() {
@@ -522,11 +523,69 @@ public class VentanaRol extends javax.swing.JFrame {
     private void cbJ1RazaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbJ1RazaItemStateChanged
         String raza = cbJ1Raza.getSelectedItem().toString().toLowerCase();
         lbJ1Raza.setIcon(new ImageIcon("src/main/java/libreri/raza/"+raza+".png"));
+        
+        switch (raza) {
+            case "humano" -> {
+                spJ1Vida.setModel(new SpinnerNumberModel(100, 100, 500, 50));
+                spJ1Mana.setModel(new SpinnerNumberModel(10, 10, 100, 5));
+                spJ1Nivel.setModel(new SpinnerNumberModel(1, 1, 25, 1));
+            }
+            case "elfo" -> {
+                spJ1Vida.setModel(new SpinnerNumberModel(50, 50, 350, 50));
+                spJ1Mana.setModel(new SpinnerNumberModel(100, 100, 450, 10));
+                spJ1Nivel.setModel(new SpinnerNumberModel(1, 1, 35, 1));
+            }
+            case "hada" -> {
+                spJ1Vida.setModel(new SpinnerNumberModel(50, 50, 250, 50));
+                spJ1Mana.setModel(new SpinnerNumberModel(100, 100, 750, 50));
+                spJ1Nivel.setModel(new SpinnerNumberModel(1, 1, 35, 1));
+            }
+            case "duende" -> {
+                spJ1Vida.setModel(new SpinnerNumberModel(100, 100, 400, 50));
+                spJ1Mana.setModel(new SpinnerNumberModel(50, 50, 250, 50));
+                spJ1Nivel.setModel(new SpinnerNumberModel(1, 1, 30, 1));
+            }
+            case "orco" -> {
+                spJ1Vida.setModel(new SpinnerNumberModel(150, 150, 750, 50));
+                spJ1Mana.setModel(new SpinnerNumberModel(0, 0, 0, 0));
+                spJ1Nivel.setModel(new SpinnerNumberModel(1, 1, 15, 1));
+            }
+            default -> throw new AssertionError();
+        }
     }//GEN-LAST:event_cbJ1RazaItemStateChanged
 
     private void cbJ2RazaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbJ2RazaItemStateChanged
         String raza = cbJ2Raza.getSelectedItem().toString().toLowerCase();
         lbJ2Raza.setIcon(new ImageIcon("src/main/java/libreri/raza/"+raza+".png"));
+        
+        switch (raza) {
+            case "humano" -> {
+                spJ2Vida.setModel(new SpinnerNumberModel(100, 100, 500, 50));
+                spJ2Mana.setModel(new SpinnerNumberModel(10, 10, 100, 5));
+                spJ2Nivel.setModel(new SpinnerNumberModel(1, 1, 25, 1));
+            }
+            case "elfo" -> {
+                spJ2Vida.setModel(new SpinnerNumberModel(50, 50, 350, 50));
+                spJ2Mana.setModel(new SpinnerNumberModel(100, 100, 450, 10));
+                spJ2Nivel.setModel(new SpinnerNumberModel(1, 1, 35, 1));
+            }
+            case "hada" -> {
+                spJ2Vida.setModel(new SpinnerNumberModel(50, 50, 250, 50));
+                spJ2Mana.setModel(new SpinnerNumberModel(100, 100, 750, 50));
+                spJ2Nivel.setModel(new SpinnerNumberModel(1, 1, 35, 1));
+            }
+            case "duende" -> {
+                spJ2Vida.setModel(new SpinnerNumberModel(100, 100, 400, 50));
+                spJ2Mana.setModel(new SpinnerNumberModel(50, 50, 250, 50));
+                spJ2Nivel.setModel(new SpinnerNumberModel(1, 1, 30, 1));
+            }
+            case "orco" -> {
+                spJ2Vida.setModel(new SpinnerNumberModel(150, 150, 750, 50));
+                spJ2Mana.setModel(new SpinnerNumberModel(0, 0, 0, 0));
+                spJ2Nivel.setModel(new SpinnerNumberModel(1, 1, 15, 1));
+            }
+            default -> throw new AssertionError();
+        }
     }//GEN-LAST:event_cbJ2RazaItemStateChanged
 
     private void btnJ1CrearPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ1CrearPersonajeActionPerformed
