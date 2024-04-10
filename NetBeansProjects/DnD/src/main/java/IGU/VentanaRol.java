@@ -673,8 +673,6 @@ public class VentanaRol extends javax.swing.JFrame {
         lblJ2Vida.setText("vida: "+ jugador2.getVida());
         btnJ1AtaqueUno.setEnabled(false);
         btnJ1AtaqueDos.setEnabled(false);
-        lblJ1Vida.setText("vida: "+ spJ1Vida.getValue().toString());
-        lblJ1mana.setText("Maná: "+ spJ1Mana.getValue().toString());
         if (jugador2.getVida()>=1) {
             btnJ2AtaqueUno.setEnabled(true);
             btnJ2AtaqueDos.setEnabled(true);
@@ -704,7 +702,7 @@ public class VentanaRol extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJ2AtaqueUnoActionPerformed
 
     private void btnJ2AtaqueDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJ2AtaqueDosActionPerformed
-        agregarLineaColor(jTextPane1, jugador2.atacar1(jugador1), Color.BLACK);
+        agregarLineaColor(jTextPane1, jugador2.atacar2(jugador1), Color.BLACK);
         lblJ2mana.setText("Maná: "+ jugador2.getMana());
         lblJ1Vida.setText("vida: "+ jugador1.getVida());
         btnJ2AtaqueUno.setEnabled(false);
